@@ -122,101 +122,83 @@
 }
 
 /* ============================================================
-   MOBILE — 768px 이하
+   TABLET — 768px 이하
 ============================================================ */
 @media (max-width: 768px) {
-  .tools {
-    padding: 3rem 6vw;
-  }
-
-  .header {
-    gap: 2rem;
-    padding: 2rem 0 1.8rem;
-    font-size: 0.74rem;
-    letter-spacing: 0.1em;
-  }
-
-  .headerLine {
-    width: 3rem;
-  }
-
-  /* 링 크기 축소 */
   .ring {
-    width: clamp(160px, 44vw, 220px);
-  }
-
-  .body {
-    gap: clamp(1.5rem, 4vw, 3rem);
-  }
-
-  .colTitle {
-    font-size: clamp(1.1rem, 4vw, 1.4rem);
-    margin-bottom: 1rem;
-  }
-
-  .colItem {
-    font-size: clamp(0.88rem, 3.2vw, 1.05rem);
-    line-height: 2;
-  }
-
-  .scrollHint {
-    font-size: 0.66rem;
-    bottom: 1.6rem;
-    letter-spacing: 0.14em;
+    width: clamp(180px, 30vw, 260px);
   }
 }
 
 /* ============================================================
    MOBILE — 560px 이하
+   Tools(위) → 원(가운데) → Languages(아래) 세로 배치
 ============================================================ */
 @media (max-width: 560px) {
   .tools {
-    padding: 2.5rem 5vw;
+    padding: 2rem 5vw;
+    justify-content: space-evenly;
   }
 
   .header {
     gap: 1.4rem;
-    padding: 1.7rem 0 1.5rem;
-    font-size: 0.7rem;
+    padding: 1.6rem 0 1.4rem;
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
   }
 
   .headerLine {
-    width: 2rem;
+    width: 2.5rem;
   }
 
-  /* 링 숨기고 두 컬럼 나란히 배치 */
+  /* 단일 컬럼 세로 스택 */
   .body {
-    grid-template-columns: 1fr 1fr;
-    gap: 0;
-    column-gap: 2rem;
-    align-items: start;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto;
+    justify-items: center;
+    align-items: center;
+    gap: 0.8rem;
+    max-width: 280px;
   }
 
-  .ring {
-    display: none;
-  }
-
-  /* 각 컬럼 왼쪽 정렬 + 구분선 */
-  .col {
-    align-items: flex-start;
-    padding: 0 1.2rem;
-  }
-
-  /* Tools 컬럼 (첫 번째) — 우측 경계선 */
+  /* Tools — 1행 */
   .col:first-child {
-    border-right: 1px solid rgba(0, 0, 0, 0.1);
+    grid-row: 1;
+  }
+
+  /* Ring — 2행 (가운데) */
+  .ring {
+    grid-row: 2;
+    width: clamp(150px, 52vw, 210px);
+  }
+
+  /* Languages — 3행 */
+  .col:last-child {
+    grid-row: 3;
+  }
+
+  .col {
+    align-items: center;
+    padding: 0;
+    width: 100%;
   }
 
   .colTitle {
-    font-size: 1rem;
-    margin-bottom: 0.9rem;
-    letter-spacing: 0.04em;
+    font-size: 1.05rem;
+    margin-bottom: 0.4rem;
+    text-align: center;
   }
 
   .colItem {
-    font-size: 0.88rem;
-    line-height: 2;
-    letter-spacing: 0.01em;
+    font-size: 0.92rem;
+    line-height: 1.85;
+    text-align: center;
+  }
+
+  .scrollHint {
+    font-size: 0.64rem;
+    bottom: 1.4rem;
+    letter-spacing: 0.14em;
   }
 }
 
@@ -224,21 +206,17 @@
    MOBILE — 360px 이하
 ============================================================ */
 @media (max-width: 360px) {
-  .body {
-    column-gap: 1rem;
-  }
-
-  .col {
-    padding: 0 0.8rem;
+  .ring {
+    width: clamp(120px, 44vw, 155px);
   }
 
   .colTitle {
-    font-size: 0.92rem;
+    font-size: 0.95rem;
   }
 
   .colItem {
-    font-size: 0.82rem;
-    line-height: 1.9;
+    font-size: 0.84rem;
+    line-height: 1.75;
   }
 
   .header {
@@ -247,6 +225,6 @@
   }
 
   .headerLine {
-    width: 1.2rem;
+    width: 1.5rem;
   }
 }
