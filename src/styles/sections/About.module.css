@@ -167,7 +167,7 @@
 }
 
 /* ============================================================
-   RESPONSIVE
+   RESPONSIVE — 태블릿
 ============================================================ */
 @media (max-width: 1200px) {
   .body {
@@ -181,37 +181,143 @@
   }
 }
 
+/* ============================================================
+   MOBILE — 768px 이하
+============================================================ */
 @media (max-width: 768px) {
+  .tabRow {
+    gap: 2rem;
+    padding: 2rem 0 1.8rem;
+  }
+
+  .tabSep {
+    width: 3rem;
+  }
+
+  .tabActive {
+    font-size: 0.92rem;
+  }
+
+  .tab {
+    font-size: 0.74rem;
+  }
+
+  /* 본문: 세로 스택 — 텍스트 위, 사진 아래 */
   .body {
     flex-direction: column;
-    padding: 0 5vw;
-    gap: 2.5rem;
+    align-items: flex-start;
+    padding: 0 6vw;
+    gap: 0;
+    justify-content: flex-start;
+    padding-top: 2.5rem;
   }
+
+  .expList {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .expItem {
+    margin-bottom: clamp(2.5rem, 6vw, 3.5rem);
+  }
+
+  .expTitle {
+    font-size: clamp(1rem, 4.5vw, 1.2rem);
+    flex-wrap: wrap;
+  }
+
+  /* 회사명과 직책 줄바꿈 처리 */
+  .expRole {
+    display: block;
+    font-size: 0.9em;
+    margin-top: 0.2rem;
+    opacity: 0.8;
+  }
+
+  .expPeriod {
+    font-size: 0.8rem;
+    margin-bottom: 0.9rem;
+  }
+
+  .taskList li {
+    font-size: 0.84rem;
+    line-height: 1.6;
+  }
+
+  /* 사진: 텍스트 아래 우측 정렬 — 작게 */
   .photoWrap {
     width: 100%;
     display: flex;
     justify-content: flex-end;
+    margin-top: 0;
+    padding-bottom: 4rem; /* scroll hint 여백 */
   }
+
   .photo {
-    width: clamp(120px, 36vw, 200px);
+    width: clamp(110px, 30vw, 160px);
+    border-radius: 2px;
   }
-  .tabRow {
-    gap: 2rem;
-    padding: 2.2rem 0 2rem;
+
+  .scrollHint {
+    font-size: 0.66rem;
+    bottom: 1.6rem;
+    letter-spacing: 0.14em;
   }
 }
 
+/* ============================================================
+   MOBILE — 480px 이하
+============================================================ */
 @media (max-width: 480px) {
+  .tabRow {
+    gap: 1.4rem;
+    padding: 1.7rem 0 1.5rem;
+  }
+
+  .tabSep {
+    width: 2rem;
+  }
+
+  .body {
+    padding: 0 5vw;
+    padding-top: 2rem;
+  }
+
+  .expItem {
+    margin-bottom: 2.2rem;
+  }
+
+  .expTitle {
+    font-size: 0.96rem;
+  }
+
+  .expPeriod {
+    font-size: 0.76rem;
+  }
+
+  .taskList li {
+    font-size: 0.8rem;
+    padding-left: 1.2em;
+  }
+
+  .photo {
+    width: clamp(90px, 26vw, 130px);
+  }
+}
+
+/* ============================================================
+   MOBILE — 360px 이하 (초소형)
+============================================================ */
+@media (max-width: 360px) {
   .photoWrap {
     display: none;
   }
+
   .expTitle {
-    font-size: 1rem;
+    font-size: 0.9rem;
   }
+
   .tabRow {
-    gap: 1.5rem;
-  }
-  .tabSep {
-    width: 2.5rem;
+    gap: 1rem;
   }
 }

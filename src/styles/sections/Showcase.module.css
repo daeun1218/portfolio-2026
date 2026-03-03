@@ -109,21 +109,108 @@
   color: var(--text-dark-primary);
 }
 
-/* ── responsive ── */
-@media (max-width: 640px) {
+/* ============================================================
+   MOBILE — 768px 이하
+============================================================ */
+@media (max-width: 768px) {
+  .header {
+    gap: 2rem;
+    padding: 2rem 0 1.8rem;
+  }
+
+  .headerLine {
+    width: 3rem;
+  }
+
+  .headerActive {
+    font-size: 0.92rem;
+  }
+
+  .headerSub {
+    font-size: 0.74rem;
+  }
+
   .list {
-    padding: 0 5vw;
+    padding: 0 6vw;
+    justify-content: center;
+    gap: 0;
   }
-  .itemTitle {
-    font-size: 1.4rem;
-  }
+
   .item {
+    padding: 1.8rem 0;
     gap: 0.8rem;
+    /* 제목 / 태그 / 화살표 세 열 유지 */
+    grid-template-columns: 1fr auto auto;
+    align-items: center;
+  }
+
+  .itemTitle {
+    font-size: clamp(1.4rem, 6vw, 2rem);
+  }
+
+  .itemTag {
+    font-size: 0.74rem;
+  }
+
+  .itemArrow {
+    font-size: 0.9rem;
+  }
+
+  /* 탭 터치 상태 */
+  .item:active {
+    opacity: 0.5;
   }
 }
 
-@media (max-width: 400px) {
+/* ============================================================
+   MOBILE — 480px 이하
+============================================================ */
+@media (max-width: 480px) {
+  .header {
+    gap: 1.4rem;
+    padding: 1.7rem 0 1.5rem;
+  }
+
+  .headerLine {
+    width: 2rem;
+  }
+
+  .list {
+    padding: 0 5vw;
+  }
+
+  .item {
+    padding: 1.5rem 0;
+    gap: 0.6rem;
+  }
+
+  .itemTitle {
+    font-size: clamp(1.2rem, 7vw, 1.6rem);
+    letter-spacing: -0.02em;
+  }
+
+  /* 태그: 작은 화면에선 두 줄 방지를 위해 더 줄임 */
+  .itemTag {
+    font-size: 0.68rem;
+    letter-spacing: 0.04em;
+  }
+}
+
+/* ============================================================
+   MOBILE — 360px 이하
+============================================================ */
+@media (max-width: 360px) {
+  /* 태그 숨기고 제목 + 화살표만 */
   .itemTag {
     display: none;
+  }
+
+  .itemTitle {
+    font-size: 1.15rem;
+  }
+
+  .item {
+    grid-template-columns: 1fr auto;
+    padding: 1.3rem 0;
   }
 }

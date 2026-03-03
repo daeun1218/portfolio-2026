@@ -117,12 +117,90 @@
   }
 }
 
-@media (max-width: 640px) {
-  .headline {
-    font-size: 1.5rem;
-  }
+/* ============================================================
+   MOBILE — 768px 이하
+============================================================ */
+@media (max-width: 768px) {
   .name {
-    font-size: 0.65rem;
-    letter-spacing: 0.35em;
+    font-size: 0.72rem;
+    letter-spacing: 0.38em;
+    top: 1.5rem;
+  }
+
+  .headline {
+    font-size: clamp(1.9rem, 7.5vw, 2.6rem);
+    line-height: 1.28;
+    letter-spacing: -0.02em;
+  }
+
+  .sub {
+    font-size: clamp(0.88rem, 3.8vw, 1.1rem);
+    margin-top: 1.1rem;
+    letter-spacing: 0.03em;
+    line-height: 1.7;
+  }
+
+  .copy {
+    padding: 0 2rem;
+  }
+
+  .glow {
+    width: min(80vw, 80vw);
+    height: min(80vw, 80vw);
+    filter: blur(24px);
+  }
+
+  .scrollHint {
+    bottom: 1.6rem;
+    font-size: 0.6rem;
+    letter-spacing: 0.22em;
+  }
+
+  .scrollHint::after {
+    height: 1.6rem;
+  }
+}
+
+/* ============================================================
+   MOBILE — 480px 이하 (소형 기기)
+============================================================ */
+@media (max-width: 480px) {
+  .name {
+    font-size: 0.6rem;
+    letter-spacing: 0.28em;
+    top: 1.3rem;
+  }
+
+  .headline {
+    font-size: clamp(1.6rem, 8.5vw, 2rem);
+    line-height: 1.25;
+  }
+
+  .sub {
+    font-size: 0.82rem;
+    margin-top: 1rem;
+    letter-spacing: 0.02em;
+  }
+
+  .copy {
+    padding: 0 1.5rem;
+  }
+}
+
+/* ============================================================
+   MOBILE — 360px 이하 (초소형 기기)
+============================================================ */
+@media (max-width: 360px) {
+  .name {
+    font-size: 0.52rem;
+    letter-spacing: 0.2em;
+  }
+
+  .headline {
+    font-size: 1.45rem;
+  }
+
+  .sub {
+    font-size: 0.78rem;
   }
 }
