@@ -1,0 +1,118 @@
+/* ============================================================
+   FONTS
+============================================================ */
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Noto+Sans+KR:wght@300;400;500&display=swap');
+
+/* ============================================================
+   TOKENS
+============================================================ */
+:root {
+  /* palette */
+  --bg-light:         #f0eeea;
+  --bg-dark:          #111110;
+  --text-primary:     #1a1a18;
+  --text-dark-primary:#e8e6e1;
+  --muted:            #888880;
+  --muted-dark:       rgba(232, 230, 225, 0.38);
+  --border-light:     #ccccc8;
+  --border-dark:      rgba(255, 255, 255, 0.08);
+
+  /* type */
+  --font-serif: 'EB Garamond', 'Georgia', serif;
+  --font-sans:  'Noto Sans KR', sans-serif;
+
+  /* motion */
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --duration-section: 0.75s;
+  --duration-item:    0.55s;
+}
+
+/* ============================================================
+   RESET
+============================================================ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { font-size: 16px; -webkit-font-smoothing: antialiased; }
+
+body {
+  font-family: var(--font-serif);
+  background: var(--bg-light);
+  color: var(--text-primary);
+  overflow: hidden;
+}
+
+/* ============================================================
+   SCROLL CONTAINER
+============================================================ */
+.scroll-container {
+  height: 100dvh;
+  overflow-y: scroll;
+  scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+  outline: none;
+}
+.scroll-container::-webkit-scrollbar { display: none; }
+
+/* ============================================================
+   SECTION BASE
+============================================================ */
+.section {
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+  min-height: 100dvh;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* section fade-in */
+.section > * {
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    opacity  var(--duration-section) var(--ease-out-expo),
+    transform var(--duration-section) var(--ease-out-expo);
+}
+
+.section--visible > * {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* stagger items */
+[data-animate="item"] {
+  opacity: 0;
+  transform: translateY(20px);
+  transition:
+    opacity  var(--duration-item) var(--ease-out-expo) var(--delay, 0ms),
+    transform var(--duration-item) var(--ease-out-expo) var(--delay, 0ms);
+}
+
+.section--visible [data-animate="item"],
+[data-animate="item"].item--visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* dark variant */
+.section--dark {
+  background: var(--bg-dark);
+  color: var(--text-dark-primary);
+}
+
+/* ============================================================
+   REDUCED MOTION
+============================================================ */
+@media (prefers-reduced-motion: reduce) {
+  .scroll-container {
+    scroll-snap-type: none;
+    scroll-behavior: auto;
+  }
+  .section > *,
+  [data-animate="item"] {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+}

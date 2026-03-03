@@ -1,0 +1,216 @@
+/* ============================================================
+   About Section  — 1920×1080 기준 시안 일치 버전
+   변경 포인트:
+   · 탭 헤더: 좌측 → 중앙 정렬, EB Garamond 세리프, 구분선 추가
+   · 콘텐츠 영역: 상단 여백 대폭 증가 (탭 아래 ~160px 공백)
+   · 텍스트: 회사명 1.25rem→1.5rem, 기간 0.76→0.9rem, 항목 0.8→0.9rem
+   · 사진: 160px→280px 폭, 세로 비율 유지, 우측 고정
+   · Scroll 힌트: 하단 중앙
+============================================================ */
+
+/* ── 섹션 컨테이너 ─────────────────────────────────────── */
+.about {
+  padding: 0;
+  justify-content: space-between; /* 탭(top) · 본문(middle) · 힌트(bottom) */
+  position: relative;
+}
+
+/* ── 탭 헤더 (중앙 정렬) ─────────────────────────────── */
+.tabRow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3.5rem;
+  padding: 2.8rem 0 2.4rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  width: 100%;
+  flex-shrink: 0;
+}
+
+/* 탭 사이 구분선 */
+.tabRow::before {
+  display: none; /* gap으로 처리 */
+}
+
+.tabSep {
+  display: block;
+  width: 4.5rem;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.25);
+  flex-shrink: 0;
+}
+
+.tab {
+  font-size: 0.82rem;
+  letter-spacing: 0.12em;
+  font-family: var(--font-sans);
+  font-weight: 400;
+  color: rgba(232, 230, 225, 0.38);
+}
+
+.tabActive {
+  font-family: var(--font-serif); /* EB Garamond — 시안과 동일 */
+  font-size: 1rem;
+  letter-spacing: 0.08em;
+  color: var(--text-dark-primary);
+  font-weight: 400;
+}
+
+/* ── 본문 래퍼 ────────────────────────────────────────── */
+.body {
+  display: flex;
+  align-items: center; /* 경력 텍스트와 사진 세로 중앙 */
+  justify-content: space-between;
+  padding: 0 8vw;
+  flex: 1; /* 탭과 힌트 사이 남은 공간 전부 차지 */
+}
+
+/* ── 경력 목록 ────────────────────────────────────────── */
+.expList {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  flex: 1;
+  max-width: 700px;
+}
+
+.expItem {
+  margin-bottom: clamp(5rem, 5vh, 3.8rem);
+}
+
+.expTitle {
+  font-size: clamp(1.1rem, 1.5vw, 1.45rem);
+  font-weight: 700;
+  font-family: var(--font-sans);
+  color: var(--text-dark-primary);
+  margin-bottom: 0.65rem;
+  line-height: 1.35;
+  letter-spacing: -0.01em;
+}
+
+.expRole {
+  font-weight: 500;
+  color: var(--text-dark-primary); /* 시안에서 동일 색상 */
+}
+
+.expPeriod {
+  font-size: clamp(0.82rem, 1vw, 0.95rem);
+  font-family: var(--font-sans);
+  font-weight: 300;
+  color: #e6e6e6;
+  margin-bottom: 1.1rem;
+  letter-spacing: 0.01em;
+}
+
+.taskList {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.taskList li {
+  font-size: clamp(1rem, 1vw, 0.92rem);
+  font-family: var(--font-sans);
+  font-weight: 300;
+  color: #d6d6d6;
+  padding-left: 1.4em;
+  position: relative;
+  line-height: 1.65;
+}
+
+.taskList li::before {
+  content: '•';
+  position: absolute;
+  left: 0;
+  color: rgba(232, 230, 225, 0.4);
+  font-size: 0.7em;
+  top: 0.2em;
+}
+
+/* ── 프로필 사진 ──────────────────────────────────────── */
+.photoWrap {
+  flex-shrink: 0;
+  margin-top: -4rem;
+}
+
+.photo {
+  width: clamp(220px, 24vw, 360px);
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  object-position: top center;
+  display: block;
+  border-radius: 2px;
+}
+
+/* ── Scroll 힌트 (하단 중앙) ──────────────────────────── */
+.scrollHint {
+  position: absolute;
+  bottom: 2.2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 0.72rem;
+  font-family: var(--font-sans);
+  font-weight: 300;
+  letter-spacing: 0.18em;
+  color: rgba(232, 230, 225, 0.45);
+  white-space: nowrap;
+}
+
+.scrollHint::after {
+  content: '↓';
+  font-size: 0.8rem;
+}
+
+/* ============================================================
+   RESPONSIVE
+============================================================ */
+@media (max-width: 1200px) {
+  .body {
+    padding: 0 6vw;
+  }
+}
+
+@media (max-width: 1024px) {
+  .photo {
+    width: clamp(160px, 20vw, 240px);
+  }
+}
+
+@media (max-width: 768px) {
+  .body {
+    flex-direction: column;
+    padding: 0 5vw;
+    gap: 2.5rem;
+  }
+  .photoWrap {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+  }
+  .photo {
+    width: clamp(120px, 36vw, 200px);
+  }
+  .tabRow {
+    gap: 2rem;
+    padding: 2.2rem 0 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .photoWrap {
+    display: none;
+  }
+  .expTitle {
+    font-size: 1rem;
+  }
+  .tabRow {
+    gap: 1.5rem;
+  }
+  .tabSep {
+    width: 2.5rem;
+  }
+}

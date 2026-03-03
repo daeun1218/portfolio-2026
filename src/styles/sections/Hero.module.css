@@ -1,0 +1,128 @@
+.hero {
+  background: var(--bg-light);
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+/* ── 이름: 화면 상단 가운데 ── */
+.name {
+  position: absolute;
+  top: 1.8rem;
+  left: 0;
+  right: 0;
+  text-align: center;
+  /* letter-spacing은 마지막 글자 뒤에도 공백을 추가해 시각적으로 왼쪽으로 치우쳐 보임.
+     동일한 값을 padding-left로 보정하면 정확한 시각적 중앙이 됨 */
+  padding-left: 0.5em;
+  letter-spacing: 0.5em;
+  font-size: 1rem;
+  font-family: var(--font-serif);
+  font-weight: 400;
+  color: #262626;
+  white-space: nowrap;
+}
+
+/* ── 배경 원형 그림자 (완전한 원) ── */
+.glow {
+  position: absolute;
+  /* 뷰포트 단축변 기준으로 정사각형 유지 → 항상 원형 */
+  width: min(52vw, 52vh);
+  height: min(52vw, 52vh);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(
+    circle,
+    /* ellipse → circle */ rgba(0, 0, 0, 0.13) 0%,
+    rgba(0, 0, 0, 0.07) 45%,
+    transparent 70%
+  );
+  border-radius: 50%;
+  pointer-events: none;
+  filter: blur(18px);
+}
+
+.copy {
+  position: relative;
+  z-index: 1;
+  padding: 0 1.5rem;
+}
+
+.headline {
+  font-size: clamp(3rem, 3.8vw, 2.65rem);
+  font-weight: 600;
+  line-height: 1.32;
+  letter-spacing: -0.01em;
+  color: var(--text-primary);
+}
+
+.headline em {
+  font-style: italic;
+  font-weight: 400;
+}
+
+.sub {
+  margin-top: 1.4rem;
+  font-size: clamp(1.2rem, 1.2vw, 0.88rem);
+  font-family: var(--font-sans);
+  font-weight: 300;
+  color: #151515;
+  letter-spacing: 0.04em;
+}
+
+/* ── scroll hint ── */
+.scrollHint {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.68rem;
+  letter-spacing: 0.28em;
+  color: var(--muted);
+  font-family: var(--font-sans);
+  font-weight: 300;
+}
+
+.scrollHint::after {
+  content: '';
+  width: 1px;
+  height: 2rem;
+  background: var(--muted);
+  animation: lineDown 1.7s var(--ease-out-expo) infinite;
+}
+
+@keyframes lineDown {
+  0% {
+    transform: scaleY(0);
+    transform-origin: top;
+    opacity: 1;
+  }
+  50% {
+    transform: scaleY(1);
+    transform-origin: top;
+    opacity: 1;
+  }
+  51% {
+    transform-origin: bottom;
+  }
+  100% {
+    transform: scaleY(0);
+    transform-origin: bottom;
+    opacity: 0;
+  }
+}
+
+@media (max-width: 640px) {
+  .headline {
+    font-size: 1.5rem;
+  }
+  .name {
+    font-size: 0.65rem;
+    letter-spacing: 0.35em;
+  }
+}

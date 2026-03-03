@@ -1,0 +1,38 @@
+.nav {
+  position: fixed;
+  right: 2rem;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 200;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--muted);
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.3s;
+}
+
+.dot.active {
+  background: var(--text-primary);
+  transform: scale(1.6);
+}
+
+/* dark 섹션 위에 있을 때 */
+.dot.onDark {
+  background: rgba(232, 230, 225, 0.35);
+}
+.dot.onDark.active {
+  background: var(--text-dark-primary);
+}
+
+@media (max-width: 640px) {
+  .nav { right: 0.75rem; }
+}
