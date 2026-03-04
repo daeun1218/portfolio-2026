@@ -164,17 +164,19 @@
   /* Tools — 1행 */
   .col:first-child {
     grid-row: 1;
+    padding-bottom: 3rem;
   }
 
   /* Ring — 2행 (가운데) */
   .ring {
     grid-row: 2;
-    width: clamp(150px, 52vw, 210px);
+    width: clamp(50px, 30vw, 100px);
   }
 
   /* Languages — 3행 */
   .col:last-child {
     grid-row: 3;
+    padding-top: 3rem;
   }
 
   .col {
@@ -207,7 +209,7 @@
 ============================================================ */
 @media (max-width: 360px) {
   .ring {
-    width: clamp(120px, 44vw, 155px);
+    width: clamp(80px, 40vw, 150px);
   }
 
   .colTitle {
