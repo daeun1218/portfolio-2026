@@ -33,9 +33,15 @@ const projects = [
 ];
 
 export default function ShowcaseSection() {
+  const isMobile = window.matchMedia('(hover: none) and (pointer: coarse)').matches;
+
   return (
     <section
-      className={`section--dark ${styles.showcase}`}
+      className={
+        isMobile
+          ? `section section--dark ${styles.showcase}`
+          : `section--dark ${styles.showcase}`
+      }
       id="showcase"
       aria-label="Showcase"
     >
