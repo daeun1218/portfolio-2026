@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import styles from '../styles/sections/Showcase.module.css';
 
 const projects = [
@@ -34,6 +35,13 @@ const projects = [
 
 export default function ShowcaseSection() {
   const isMobile = window.matchMedia('(hover: none) and (pointer: coarse)').matches;
+  const navigate = useNavigate();
+
+  const handleCardClick = (p) => {
+    if (!p.comingSoon) {
+      navigate(`/project/${p.id}`);
+    }
+  };
 
   return (
     <section
@@ -55,7 +63,16 @@ export default function ShowcaseSection() {
       {/* 2×2 카드 그리드 */}
       <div className={styles.grid}>
         {projects.map((p) => (
-          <div key={p.id} className={styles.card} data-animate="item" tabIndex={0}>
+          <div
+            key={p.id}
+            className={`${styles.card} ${!p.comingSoon ? styles.cardClickable : ''}`}
+            data-animate="item"
+            tabIndex={0}
+            onClick={() => handleCardClick(p)}
+            onKeyDown={(e) => e.key === 'Enter' && handleCardClick(p)}
+            role={!p.comingSoon ? 'button' : undefined}
+            aria-label={!p.comingSoon ? `${p.title} 프로젝트 보기` : undefined}
+          >
             {/* 썸네일 영역 */}
             <div className={styles.thumb}>
               {p.comingSoon ? (
