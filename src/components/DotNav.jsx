@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from '../styles/DotNav.module.css';
 
-const LABELS = ['Hero', 'About', 'Tools', 'Showcase'];
+const LABELS = ['Hero', 'About', 'About Exp', 'Tools', 'Showcase'];
 
 export default function DotNav({ activeIndex, onDotClick, darkSections }) {
   return (

@@ -10,11 +10,9 @@ import AboutSection from '../components/AboutSection';
 import ToolsSection from '../components/ToolsSection';
 import ShowcaseSection from '../components/ShowcaseSection';
 
-/* about-exp 추가 */
 const SECTION_IDS_MOBILE = ['hero', 'about', 'about-exp', 'tools', 'showcase'];
 const SECTION_IDS_DESKTOP = ['hero', 'about', 'about-exp', 'tools'];
 
-/* dark 섹션 인덱스 */
 const DARK_SECTIONS = [1, 2, 4]; /* about, about-exp, showcase */
 
 export default function Home() {
@@ -39,18 +37,46 @@ export default function Home() {
     onIndexChange: handleIndexChange,
   });
 
-  /* 데스크탑: showcase 진입 시 dot 활성화 */
+  /* 데스크탑: showcase 진입/이탈 시 dot 동기화 */
   useEffect(() => {
     if (isMobile) return;
+
     const onScroll = () => {
       const showcase = document.getElementById('showcase');
       if (!showcase) return;
-      if (showcase.getBoundingClientRect().top <= 1) {
+      const rect = showcase.getBoundingClientRect();
+
+      if (rect.top <= 1) {
+        // showcase 진입
         setActiveIndex(4);
+      } else {
+        // showcase 벗어남 → scroll-container 기준으로 현재 섹션 계산
+        const sections = SECTION_IDS_DESKTOP.map((id) => document.getElementById(id));
+        const container = document.querySelector('.scroll-container');
+        if (!container) return;
+        const mid = container.scrollTop + container.clientHeight / 2;
+        let closest = 0;
+        let minDist = Infinity;
+        sections.forEach((sec, i) => {
+          if (!sec) return;
+          const dist = Math.abs(sec.offsetTop + sec.clientHeight / 2 - mid);
+          if (dist < minDist) {
+            minDist = dist;
+            closest = i;
+          }
+        });
+        setActiveIndex(closest);
       }
     };
+
+    const container = document.querySelector('.scroll-container');
     window.addEventListener('scroll', onScroll, { passive: true });
-    return () => window.removeEventListener('scroll', onScroll);
+    container?.addEventListener('scroll', onScroll, { passive: true });
+
+    return () => {
+      window.removeEventListener('scroll', onScroll);
+      container?.removeEventListener('scroll', onScroll);
+    };
   }, [isMobile]);
 
   useSectionAnimation();
@@ -78,7 +104,7 @@ export default function Home() {
         aria-label="포트폴리오 메인"
       >
         <HeroSection />
-        <AboutSection /> {/* Intro + Experience 두 섹션 포함 */}
+        <AboutSection />
         <ToolsSection />
         {isMobile && <ShowcaseSection />}
       </main>
