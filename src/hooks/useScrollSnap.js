@@ -129,18 +129,51 @@ export default function useScrollSnap({ sectionIds, onIndexChange }) {
 
     /* 키보드 접근성 */
     const onKeyDown = (e) => {
+      if (!['ArrowDown', 'ArrowUp', 'PageDown', 'PageUp'].includes(e.key)) return;
+      e.preventDefault();
+
+      if (isSnapping.current) return;
+
+      const { inShowcase, atTop } = getShowcaseState();
       const cur = getActiveIndex();
+
       if (['ArrowDown', 'PageDown'].includes(e.key)) {
-        e.preventDefault();
+        if (inShowcase) return; // showcase 안에서는 자유 스크롤
         if (cur === sectionIds.length - 1) {
-          document.getElementById('showcase')?.scrollIntoView({ behavior: 'smooth' });
+          // 마지막 snap 섹션 → showcase로
+          const showcase = document.getElementById('showcase');
+          if (showcase) {
+            isSnapping.current = true;
+            showcase.scrollIntoView({ behavior: 'smooth' });
+            setTimeout(() => {
+              isSnapping.current = false;
+            }, 900);
+          }
         } else {
+          isSnapping.current = true;
           scrollTo(Math.min(cur + 1, sectionIds.length - 1));
+          setTimeout(() => {
+            isSnapping.current = false;
+          }, 900);
         }
       }
+
       if (['ArrowUp', 'PageUp'].includes(e.key)) {
-        e.preventDefault();
-        scrollTo(Math.max(cur - 1, 0));
+        if (inShowcase && atTop) {
+          // showcase 최상단 → 마지막 snap 섹션으로
+          isSnapping.current = true;
+          scrollTo(sectionIds.length - 1);
+          setTimeout(() => {
+            isSnapping.current = false;
+          }, 900);
+        } else if (!inShowcase) {
+          if (cur === 0) return; // 첫 섹션에서 위로 → 아무것도 안 함
+          isSnapping.current = true;
+          scrollTo(Math.max(cur - 1, 0));
+          setTimeout(() => {
+            isSnapping.current = false;
+          }, 900);
+        }
       }
     };
 
