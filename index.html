@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ko">
   <head>
     <meta charset="UTF-8" />
@@ -8,5 +8,15 @@
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
+
+    <script>
+      window.addEventListener(
+        'wheel',
+        (e) => {
+          if (e.ctrlKey) e.preventDefault();
+        },
+        { passive: false }
+      );
+    </script>
   </body>
 </html>
