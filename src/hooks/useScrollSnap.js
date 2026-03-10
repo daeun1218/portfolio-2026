@@ -10,7 +10,6 @@ export default function useScrollSnap({ sectionIds, onIndexChange }) {
       : false
   );
 
-  /* 모바일 여부 — 터치 디바이스면 JS 스냅 전부 끔 */
   const isMobile = () =>
     typeof window !== 'undefined' &&
     window.matchMedia('(hover: none) and (pointer: coarse)').matches;
@@ -47,7 +46,6 @@ export default function useScrollSnap({ sectionIds, onIndexChange }) {
     const el = containerRef.current;
     if (!el) return;
 
-    /* scroll → dot 동기화 (모바일 포함) */
     const onScroll = () => {
       cancelAnimationFrame(rafRef.current);
       rafRef.current = requestAnimationFrame(() => {
@@ -66,7 +64,6 @@ export default function useScrollSnap({ sectionIds, onIndexChange }) {
       };
     };
 
-    /* ── 데스크탑 전용: container wheel ── */
     const onContainerWheel = (e) => {
       if (isMobile()) return;
       if (prefersReduced.current) return;
@@ -109,7 +106,6 @@ export default function useScrollSnap({ sectionIds, onIndexChange }) {
       }, 900);
     };
 
-    /* ── 데스크탑 전용: window wheel (showcase → tools) ── */
     const onWindowWheel = (e) => {
       if (isMobile()) return;
       if (prefersReduced.current) return;
@@ -127,7 +123,6 @@ export default function useScrollSnap({ sectionIds, onIndexChange }) {
       }
     };
 
-    /* 키보드 접근성 */
     const onKeyDown = (e) => {
       if (!['ArrowDown', 'ArrowUp', 'PageDown', 'PageUp'].includes(e.key)) return;
       e.preventDefault();
@@ -138,9 +133,8 @@ export default function useScrollSnap({ sectionIds, onIndexChange }) {
       const cur = getActiveIndex();
 
       if (['ArrowDown', 'PageDown'].includes(e.key)) {
-        if (inShowcase) return; // showcase 안에서는 자유 스크롤
+        if (inShowcase) return;
         if (cur === sectionIds.length - 1) {
-          // 마지막 snap 섹션 → showcase로
           const showcase = document.getElementById('showcase');
           if (showcase) {
             isSnapping.current = true;
@@ -160,14 +154,13 @@ export default function useScrollSnap({ sectionIds, onIndexChange }) {
 
       if (['ArrowUp', 'PageUp'].includes(e.key)) {
         if (inShowcase && atTop) {
-          // showcase 최상단 → 마지막 snap 섹션으로
           isSnapping.current = true;
           scrollTo(sectionIds.length - 1);
           setTimeout(() => {
             isSnapping.current = false;
           }, 900);
         } else if (!inShowcase) {
-          if (cur === 0) return; // 첫 섹션에서 위로 → 아무것도 안 함
+          if (cur === 0) return;
           isSnapping.current = true;
           scrollTo(Math.max(cur - 1, 0));
           setTimeout(() => {
@@ -179,13 +172,13 @@ export default function useScrollSnap({ sectionIds, onIndexChange }) {
 
     el.addEventListener('scroll', onScroll, { passive: true });
     el.addEventListener('wheel', onContainerWheel, { passive: false });
-    el.addEventListener('keydown', onKeyDown);
+    window.addEventListener('keydown', onKeyDown); // window로 변경
     window.addEventListener('wheel', onWindowWheel, { passive: false });
 
     return () => {
       el.removeEventListener('scroll', onScroll);
       el.removeEventListener('wheel', onContainerWheel);
-      el.removeEventListener('keydown', onKeyDown);
+      window.removeEventListener('keydown', onKeyDown); // window로 변경
       window.removeEventListener('wheel', onWindowWheel);
       cancelAnimationFrame(rafRef.current);
     };
