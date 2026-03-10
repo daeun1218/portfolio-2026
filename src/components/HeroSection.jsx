@@ -16,7 +16,7 @@ export default function HeroSection() {
           Designing and Building <em>for Real Users.</em>
         </h1>
         <p className={styles.sub} data-animate="item">
-          바주얼을 넘어, 사용 경험을 만드는 프론트엔드 디자이너
+          비주얼을 넘어, 사용 경험을 만드는 프론트엔드 디자이너
         </p>
       </div>
 
