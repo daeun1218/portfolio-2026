@@ -10,6 +10,11 @@ export default function useScrollSnap({ sectionIds, onIndexChange }) {
       : false
   );
 
+  /* 모바일 여부 — 터치 디바이스면 JS 스냅 전부 끔 */
+  const isMobile = () =>
+    typeof window !== 'undefined' &&
+    window.matchMedia('(hover: none) and (pointer: coarse)').matches;
+
   const getActiveIndex = useCallback(() => {
     const el = containerRef.current;
     if (!el) return 0;
@@ -42,6 +47,7 @@ export default function useScrollSnap({ sectionIds, onIndexChange }) {
     const el = containerRef.current;
     if (!el) return;
 
+    /* scroll → dot 동기화 (모바일 포함) */
     const onScroll = () => {
       cancelAnimationFrame(rafRef.current);
       rafRef.current = requestAnimationFrame(() => {
@@ -53,13 +59,16 @@ export default function useScrollSnap({ sectionIds, onIndexChange }) {
       const showcase = document.getElementById('showcase');
       if (!showcase) return { inShowcase: false, atTop: false };
       const rect = showcase.getBoundingClientRect();
-      const inShowcase = rect.top <= 1;
-      const atTop = rect.top >= -10;
-      return { inShowcase, atTop };
+      return {
+        inShowcase: rect.top <= 1,
+        atTop: rect.top >= -10,
+        showcase,
+      };
     };
 
-    /* snap 섹션용 wheel */
+    /* ── 데스크탑 전용: container wheel ── */
     const onContainerWheel = (e) => {
+      if (isMobile()) return;
       if (prefersReduced.current) return;
       if (isSnapping.current) {
         e.preventDefault();
@@ -75,7 +84,7 @@ export default function useScrollSnap({ sectionIds, onIndexChange }) {
 
       if (isLastSection && e.deltaY > 0) {
         e.preventDefault();
-        const showcase = document.getElementById('showcase');
+        const { showcase } = getShowcaseState();
         if (showcase) {
           isSnapping.current = true;
           showcase.scrollIntoView({ behavior: 'smooth' });
@@ -100,14 +109,14 @@ export default function useScrollSnap({ sectionIds, onIndexChange }) {
       }, 900);
     };
 
-    /* showcase용 wheel — window에서 감지 */
+    /* ── 데스크탑 전용: window wheel (showcase → tools) ── */
     const onWindowWheel = (e) => {
+      if (isMobile()) return;
       if (prefersReduced.current) return;
       if (isSnapping.current) return;
       if (Math.abs(e.deltaY) < 4) return;
 
       const { inShowcase, atTop } = getShowcaseState();
-
       if (inShowcase && atTop && e.deltaY < 0) {
         e.preventDefault();
         isSnapping.current = true;
@@ -118,6 +127,7 @@ export default function useScrollSnap({ sectionIds, onIndexChange }) {
       }
     };
 
+    /* 키보드 접근성 */
     const onKeyDown = (e) => {
       const cur = getActiveIndex();
       if (['ArrowDown', 'PageDown'].includes(e.key)) {
