@@ -46,13 +46,12 @@
 ============================================================ */
 .introBody {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   justify-content: center;
   gap: 4vw;
   padding: 0 6vw;
   flex: 1;
   align-self: stretch;
-  align-items: center;
 }
 
 .introText {
@@ -122,10 +121,10 @@
 .expBody {
   display: flex;
   justify-content: center;
-  align-items: center; /* 상하 중앙 */
-  padding: 0 10vw; /* top 제거, 좌우만 */
+  align-items: center;
+  padding: 0 10vw;
   width: 100%;
-  flex: 1; /* 남은 높이 차지 */
+  flex: 1;
 }
 
 .expGrid {
@@ -193,23 +192,60 @@
 }
 
 /* ============================================================
-   RESPONSIVE
+   RESPONSIVE — 768px
 ============================================================ */
 @media (max-width: 768px) {
-  .introBody {
-    flex-direction: column;
-    padding: 0 6vw;
+  /* 탭 헤더 */
+  .tabRow {
     gap: 2rem;
-    justify-content: center;
+    padding: 2rem 0 1.8rem;
+  }
+
+  .tabSep {
+    width: 3rem;
+  }
+
+  /* Intro */
+  .introBody {
+    flex-direction: column; /* 사진 위, 텍스트 아래 */
+    padding: 2rem 6vw 4rem;
+    gap: 1.8rem;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex: 1;
+  }
+
+  .introText {
+    gap: 1rem;
+  }
+
+  .introHeadline {
+    font-size: 1.2rem;
+  }
+
+  .introPara {
+    font-size: 0.88rem;
+    padding-bottom: 1rem;
+  }
+
+  .introList li {
+    font-size: 0.88rem;
   }
 
   .photo {
-    width: clamp(120px, 40vw, 200px);
+    width: clamp(100px, 35vw, 160px);
+    aspect-ratio: 3 / 4;
   }
 
   .photoWrap {
     align-self: flex-end;
-    margin-top: -1rem;
+  }
+
+  /* Experience */
+  .expBody {
+    padding: 2rem 6vw 4rem;
+    align-items: flex-start;
+    justify-content: flex-start;
   }
 
   .expGrid {
@@ -217,19 +253,63 @@
     gap: 2.4rem;
   }
 
-  .expBody {
-    padding: 2rem 6vw;
-    align-items: flex-start;
+  .expTitle {
+    font-size: 0.95rem;
+  }
+
+  .expPeriod {
+    font-size: 0.8rem;
+  }
+
+  .taskList li {
+    font-size: 0.82rem;
   }
 }
 
+/* ============================================================
+   RESPONSIVE — 480px
+============================================================ */
 @media (max-width: 480px) {
   .tabRow {
-    gap: 2rem;
-    padding: 2rem 0 1.8rem;
+    gap: 1.4rem;
+    padding: 1.6rem 0 1.4rem;
+  }
+
+  .tabSep {
+    width: 2rem;
+  }
+
+  .introBody {
+    padding: 1.6rem 5vw 3.5rem;
+    gap: 1.4rem;
   }
 
   .introHeadline {
-    font-size: 1.15rem;
+    font-size: 1.05rem;
+  }
+
+  .introPara {
+    font-size: 0.82rem;
+    line-height: 1.7;
+  }
+
+  .introList li {
+    font-size: 0.82rem;
+  }
+
+  .photo {
+    width: clamp(90px, 30vw, 130px);
+  }
+
+  .expBody {
+    padding: 1.4rem 5vw 3rem;
+  }
+
+  .expTitle {
+    font-size: 0.88rem;
+  }
+
+  .taskList li {
+    font-size: 0.78rem;
   }
 }
