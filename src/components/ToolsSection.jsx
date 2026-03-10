@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from '../styles/sections/Tools.module.css';
 
-const tools = ['PhotoShop', 'Illustrator', 'Figma'];
+const tools = ['PhotoShop', 'Illustrator', 'Figma', 'Git', 'VScode'];
 const languages = ['HTML', 'CSS', 'JavaScript', 'React'];
 
 export default function ToolsSection() {
