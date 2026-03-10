@@ -10,7 +10,12 @@ import AboutSection from '../components/AboutSection';
 import ToolsSection from '../components/ToolsSection';
 import ShowcaseSection from '../components/ShowcaseSection';
 
-const DARK_SECTIONS = [1, 3];
+/* about-exp 추가 */
+const SECTION_IDS_MOBILE = ['hero', 'about', 'about-exp', 'tools', 'showcase'];
+const SECTION_IDS_DESKTOP = ['hero', 'about', 'about-exp', 'tools'];
+
+/* dark 섹션 인덱스 */
+const DARK_SECTIONS = [1, 2, 4]; /* about, about-exp, showcase */
 
 export default function Home() {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -18,11 +23,8 @@ export default function Home() {
     () => window.matchMedia('(hover: none) and (pointer: coarse)').matches
   );
 
-  const SECTION_IDS = isMobile
-    ? ['hero', 'about', 'tools', 'showcase']
-    : ['hero', 'about', 'tools'];
+  const SECTION_IDS = isMobile ? SECTION_IDS_MOBILE : SECTION_IDS_DESKTOP;
 
-  /* 화면 크기 변경 감지 */
   useEffect(() => {
     const mq = window.matchMedia('(hover: none) and (pointer: coarse)');
     const handler = (e) => setIsMobile(e.matches);
@@ -37,14 +39,15 @@ export default function Home() {
     onIndexChange: handleIndexChange,
   });
 
-  /* showcase 진입 시 dot 4번 활성화 (데스크탑) */
+  /* 데스크탑: showcase 진입 시 dot 활성화 */
   useEffect(() => {
     if (isMobile) return;
     const onScroll = () => {
       const showcase = document.getElementById('showcase');
       if (!showcase) return;
-      const rect = showcase.getBoundingClientRect();
-      if (rect.top <= 1) setActiveIndex(3);
+      if (showcase.getBoundingClientRect().top <= 1) {
+        setActiveIndex(4);
+      }
     };
     window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
@@ -57,7 +60,7 @@ export default function Home() {
       <DotNav
         activeIndex={activeIndex}
         onDotClick={(i) => {
-          if (!isMobile && i === 3) {
+          if (!isMobile && i === 4) {
             document
               .getElementById('showcase')
               ?.scrollIntoView({ behavior: 'smooth' });
@@ -75,7 +78,7 @@ export default function Home() {
         aria-label="포트폴리오 메인"
       >
         <HeroSection />
-        <AboutSection />
+        <AboutSection /> {/* Intro + Experience 두 섹션 포함 */}
         <ToolsSection />
         {isMobile && <ShowcaseSection />}
       </main>
