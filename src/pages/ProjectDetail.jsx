@@ -58,7 +58,7 @@ export default function ProjectDetail() {
       {/* 뒤로가기 */}
       <button
         className={styles.back}
-        onClick={() => navigate('/')}
+        onClick={() => navigate(-1)}
         aria-label="포트폴리오로 돌아가기"
       >
         ←
