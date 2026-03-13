@@ -12,7 +12,8 @@ const projectData = {
     techStack: 'React / JavaScript / CSS / Swiper',
     mockup: '/images/showcase/Javinde_Pf.png',
     liveUrl: '#',
-    githubUrls: ['#', '#'],
+    githubUrl: '#',
+    caseStudyUrl: '#',
   },
   metrocity: {
     title: 'METROCITY',
@@ -23,7 +24,8 @@ const projectData = {
     techStack: 'React / JavaScript / CSS',
     mockup: '/images/showcase/Metrocity.jpg',
     liveUrl: '#',
-    githubUrls: ['#'],
+    githubUrl: '#',
+    caseStudyUrl: '#',
   },
   onart: {
     title: 'On : art',
@@ -33,7 +35,8 @@ const projectData = {
     techStack: 'Figma',
     mockup: '/images/showcase/OnArt.jpg',
     liveUrl: null,
-    githubUrls: [],
+    githubUrl: null,
+    caseStudyUrl: '#',
   },
 };
 
@@ -46,7 +49,7 @@ export default function ProjectDetail() {
     return (
       <div className={styles.notFound}>
         <p>프로젝트를 찾을 수 없어요.</p>
-        <button onClick={() => navigate('/')} className={styles.backBtn}>
+        <button onClick={() => navigate(-1)} className={styles.backBtn}>
           ← 돌아가기
         </button>
       </div>
@@ -106,17 +109,21 @@ export default function ProjectDetail() {
               Live Site
             </a>
           )}
-          {project.githubUrls.map((url, i) => (
+          {project.githubUrl && (
             <a
-              key={i}
-              href={url}
+              href={project.githubUrl}
               className={styles.btn}
               target="_blank"
               rel="noreferrer"
             >
               GITHUB
             </a>
-          ))}
+          )}
+          {project.caseStudyUrl && (
+            <a href={`/project/${id}/case-study`} className={styles.btn}>
+              CASE STUDY
+            </a>
+          )}
         </div>
       </div>
 

@@ -1,0 +1,64 @@
+.page {
+  min-height: 100vh;
+  background: #111111;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+.back {
+  position: fixed;
+  top: 32px;
+  left: 40px;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #aaaaaa;
+  font-size: 1rem;
+  padding: 8px 16px;
+  cursor: pointer;
+  z-index: 100;
+  transition:
+    color 0.2s,
+    border-color 0.2s;
+  font-family: inherit;
+}
+
+.back:hover {
+  color: #ffffff;
+  border-color: rgb(255, 255, 255);
+}
+
+.image {
+  width: 100%;
+  max-width: 1920px;
+  height: auto;
+  display: block;
+}
+
+/* 404 */
+.notFound {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background: #111111;
+  color: #aaaaaa;
+  gap: 20px;
+}
+
+.backBtn {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #e8e8e8;
+  padding: 10px 24px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  font-family: inherit;
+  transition: border-color 0.2s;
+}
+
+.backBtn:hover {
+  border-color: rgba(255, 255, 255, 0.5);
+}
