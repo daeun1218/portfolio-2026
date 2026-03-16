@@ -55,6 +55,7 @@
   line-height: 1.32;
   letter-spacing: -0.01em;
   color: var(--text-primary);
+  font-family: var(--font-serif);
 }
 
 .headline em {

@@ -212,7 +212,9 @@ export default function JavinCaseStudy() {
           </div>
         ))}
 
-        <div className={`${styles.heroContent}${heroAnimating ? ` ${styles.animating}` : ''}`}>
+        <div
+          className={`${styles.heroContent}${heroAnimating ? ` ${styles.animating}` : ''}`}
+        >
           <span className={styles.heroTag}>{slide.tag}</span>
           <h1 className={styles.heroTitle}>{slide.title}</h1>
           <p className={styles.heroDesc}>{slide.desc}</p>
@@ -283,7 +285,9 @@ export default function JavinCaseStudy() {
             <h2 className={styles.signatureTitle}>Signature Selection</h2>
           </div>
           <div className={styles.signatureDividerFull} />
-          <p className={styles.signatureSub}>A curated edit of our newest essentials.</p>
+          <p className={styles.signatureSub}>
+            A curated edit of our newest essentials.
+          </p>
           <div className={styles.signatureDividerFull} />
         </div>
 
@@ -294,12 +298,7 @@ export default function JavinCaseStudy() {
               alt="WINK Foundation Pact"
             />
             <div className={styles.sigCardContent}>
-              <span className={styles.sigCardEyebrow}>New Arrival</span>
-              <div className={styles.sigCardTitle}>
-                WINK FOUNDATION
-                <br />
-                PACT
-              </div>
+              <div className={styles.sigCardTitle}>WINK FOUNDATION PACT</div>
               <a href="#" className={styles.sigCardBtn}>
                 SHOP NOW ›
               </a>
@@ -311,12 +310,7 @@ export default function JavinCaseStudy() {
               alt="WINK Cushion Glow"
             />
             <div className={styles.sigCardContent}>
-              <span className={styles.sigCardEyebrow}>Bestseller</span>
-              <div className={styles.sigCardTitle}>
-                WINK CUSHION
-                <br />
-                GLOW
-              </div>
+              <div className={styles.sigCardTitle}>WINK CUSHION GLOW</div>
               <a href="#" className={styles.sigCardBtn}>
                 SHOP NOW ›
               </a>
@@ -340,7 +334,9 @@ export default function JavinCaseStudy() {
                 >
                   {tab}
                 </button>
-                {i < arr.length - 1 && <span className={styles.tabSep} key={`sep-${i}`} />}
+                {i < arr.length - 1 && (
+                  <span className={styles.tabSep} key={`sep-${i}`} />
+                )}
               </>
             ))}
           </div>
@@ -358,7 +354,11 @@ export default function JavinCaseStudy() {
             {visibleProducts.map((product) => (
               <div className={styles.productCard} key={product.id}>
                 <div className={styles.productImgWrap}>
-                  <img className={styles.productImg} src={product.img} alt={product.name} />
+                  <img
+                    className={styles.productImg}
+                    src={product.img}
+                    alt={product.name}
+                  />
                 </div>
                 <div className={styles.productName}>{product.name}</div>
                 <div className={styles.productPrice}>{product.price}</div>
