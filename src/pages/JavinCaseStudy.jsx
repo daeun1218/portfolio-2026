@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import './JavinCaseStudy.css';
+import styles from '../styles/pages/JavinCaseStudy.module.css';
 
 /* ─────────────────────────────────────────
    DATA
@@ -185,49 +185,52 @@ export default function JavinCaseStudy() {
   return (
     <>
       {/* ── NAV ── */}
-      <nav className="nav">
-        <div className="nav-left">
+      <nav className={styles.nav}>
+        <div className={styles.navLeft}>
           <a href="#">신제품</a>
           <a href="/javin/about">ABOUT</a>
           <a href="#">컬렉션 ▾</a>
         </div>
-        <a href="/javin" className="nav-logo">
+        <a href="/javin" className={styles.navLogo}>
           JAVIN DE SEOUL
         </a>
-        <div className="nav-right">
+        <div className={styles.navRight}>
           <a href="#">로그인</a>
           <a href="#">가방</a>
         </div>
       </nav>
 
       {/* ── 1. HERO — 중앙 정렬 ── */}
-      <section className="hero">
+      <section className={styles.hero}>
         {heroSlides.map((s, i) => (
-          <div key={i} className={`hero-slide${i === heroIndex ? ' active' : ''}`}>
+          <div
+            key={i}
+            className={`${styles.heroSlide}${i === heroIndex ? ` ${styles.active}` : ''}`}
+          >
             <img src={s.img} alt={s.title} />
-            <div className="hero-slide-overlay" />
+            <div className={styles.heroSlideOverlay} />
           </div>
         ))}
 
-        <div className={`hero-content${heroAnimating ? ' animating' : ''}`}>
-          <span className="hero-tag">{slide.tag}</span>
-          <h1 className="hero-title">{slide.title}</h1>
-          <p className="hero-desc">{slide.desc}</p>
-          <button className="hero-btn">SHOP NOW &nbsp;›</button>
+        <div className={`${styles.heroContent}${heroAnimating ? ` ${styles.animating}` : ''}`}>
+          <span className={styles.heroTag}>{slide.tag}</span>
+          <h1 className={styles.heroTitle}>{slide.title}</h1>
+          <p className={styles.heroDesc}>{slide.desc}</p>
+          <button className={styles.heroBtn}>SHOP NOW &nbsp;›</button>
         </div>
 
-        <div className="hero-controls">
-          <span className="hero-index">
+        <div className={styles.heroControls}>
+          <span className={styles.heroIndex}>
             0{heroIndex + 1} / 0{heroSlides.length}
           </span>
-          <div className="hero-track">
-            <div className="hero-track-fill" key={heroIndex} />
+          <div className={styles.heroTrack}>
+            <div className={styles.heroTrackFill} key={heroIndex} />
           </div>
         </div>
 
-        <div className="hero-arrows">
+        <div className={styles.heroArrows}>
           <button
-            className="hero-arrow"
+            className={styles.heroArrow}
             onClick={() => {
               clearInterval(heroTimer.current);
               goToSlide((heroIndex - 1 + heroSlides.length) % heroSlides.length);
@@ -236,7 +239,7 @@ export default function JavinCaseStudy() {
             ‹
           </button>
           <button
-            className="hero-arrow"
+            className={styles.heroArrow}
             onClick={() => {
               clearInterval(heroTimer.current);
               goToSlide((heroIndex + 1) % heroSlides.length);
@@ -248,25 +251,24 @@ export default function JavinCaseStudy() {
       </section>
 
       {/* ── 2. ABOUT BRAND — 장식용 타이포 (비활성) ── */}
-      <section className="about-section">
-        {/* 장식용 레이블만 — 인터랙션 없음 */}
-        <div className="about-deco-labels">
+      <section className={styles.aboutSection}>
+        <div className={styles.aboutDecoLabels}>
           {brandValues.map((v) => (
-            <span key={v.key} className="about-deco-label">
+            <span key={v.key} className={styles.aboutDecoLabel}>
               {v.key}
             </span>
           ))}
         </div>
 
-        <div className="about-image-wrap">
+        <div className={styles.aboutImageWrap}>
           <img src="/images/Javin/about.png" alt="About Brand" />
         </div>
 
-        <div className="about-text">
-          <span className="about-label">About the brand</span>
-          <h2 className="about-title">Beauty doesn’t need to be loud.</h2>
-          <div className="about-rule" />
-          <p className="about-desc">
+        <div className={styles.aboutText}>
+          <span className={styles.aboutLabel}>About the brand</span>
+          <h2 className={styles.aboutTitle}>Beauty doesn't need to be loud.</h2>
+          <div className={styles.aboutRule} />
+          <p className={styles.aboutDesc}>
             We create products that sit quietly within everyday life, reflecting
             individuality, balance, and intention.
           </p>
@@ -274,48 +276,48 @@ export default function JavinCaseStudy() {
       </section>
 
       {/* ── 3. SIGNATURE SELECTION ── */}
-      <section className="signature-section">
-        <div className="signature-header">
-          <div className="signature-divider-full" />
-          <div className="signature-title-row">
-            <h2 className="signature-title">Signature Selection</h2>
+      <section className={styles.signatureSection}>
+        <div className={styles.signatureHeader}>
+          <div className={styles.signatureDividerFull} />
+          <div className={styles.signatureTitleRow}>
+            <h2 className={styles.signatureTitle}>Signature Selection</h2>
           </div>
-          <div className="signature-divider-full" />
-          <p className="signature-sub">A curated edit of our newest essentials.</p>
-          <div className="signature-divider-full" />
+          <div className={styles.signatureDividerFull} />
+          <p className={styles.signatureSub}>A curated edit of our newest essentials.</p>
+          <div className={styles.signatureDividerFull} />
         </div>
 
-        <div className="signature-grid">
-          <div className="sig-card">
+        <div className={styles.signatureGrid}>
+          <div className={styles.sigCard}>
             <img
               src="https://images.unsplash.com/photo-1631214524020-3c69f9d8b869?w=960&h=660&fit=crop"
               alt="WINK Foundation Pact"
             />
-            <div className="sig-card-content">
-              <span className="sig-card-eyebrow">New Arrival</span>
-              <div className="sig-card-title">
+            <div className={styles.sigCardContent}>
+              <span className={styles.sigCardEyebrow}>New Arrival</span>
+              <div className={styles.sigCardTitle}>
                 WINK FOUNDATION
                 <br />
                 PACT
               </div>
-              <a href="#" className="sig-card-btn">
+              <a href="#" className={styles.sigCardBtn}>
                 SHOP NOW ›
               </a>
             </div>
           </div>
-          <div className="sig-card">
+          <div className={styles.sigCard}>
             <img
               src="https://images.unsplash.com/photo-1614156412657-a71dc5b2a9e8?w=960&h=660&fit=crop"
               alt="WINK Cushion Glow"
             />
-            <div className="sig-card-content">
-              <span className="sig-card-eyebrow">Bestseller</span>
-              <div className="sig-card-title">
+            <div className={styles.sigCardContent}>
+              <span className={styles.sigCardEyebrow}>Bestseller</span>
+              <div className={styles.sigCardTitle}>
                 WINK CUSHION
                 <br />
                 GLOW
               </div>
-              <a href="#" className="sig-card-btn">
+              <a href="#" className={styles.sigCardBtn}>
                 SHOP NOW ›
               </a>
             </div>
@@ -324,47 +326,47 @@ export default function JavinCaseStudy() {
       </section>
 
       {/* ── BESTSELLERS ── */}
-      <section className="bestsellers-section">
-        <div className="bestsellers-header">
-          <span className="bestsellers-eyebrow">Our Selection</span>
-          <h2 className="bestsellers-title">BESTSELLERS</h2>
-          <div className="bestsellers-tabs">
+      <section className={styles.bestsellersSection}>
+        <div className={styles.bestsellersHeader}>
+          <span className={styles.bestsellersEyebrow}>Our Selection</span>
+          <h2 className={styles.bestsellersTitle}>BESTSELLERS</h2>
+          <div className={styles.bestsellersTabs}>
             {Object.keys(allProducts).map((tab, i, arr) => (
               <>
                 <button
                   key={tab}
-                  className={`bestsellers-tab${activeTab === tab ? ' active' : ''}`}
+                  className={`${styles.bestsellersTab}${activeTab === tab ? ` ${styles.active}` : ''}`}
                   onClick={() => handleTab(tab)}
                 >
                   {tab}
                 </button>
-                {i < arr.length - 1 && <span className="tab-sep" key={`sep-${i}`} />}
+                {i < arr.length - 1 && <span className={styles.tabSep} key={`sep-${i}`} />}
               </>
             ))}
           </div>
         </div>
 
-        <div className="products-carousel">
+        <div className={styles.productsCarousel}>
           <button
-            className="carousel-arrow"
+            className={styles.carouselArrow}
             onClick={() => setProductPage((p) => Math.max(0, p - 1))}
             disabled={productPage === 0}
           >
             ‹
           </button>
-          <div className="products-track">
+          <div className={styles.productsTrack}>
             {visibleProducts.map((product) => (
-              <div className="product-card" key={product.id}>
-                <div className="product-img-wrap">
-                  <img className="product-img" src={product.img} alt={product.name} />
+              <div className={styles.productCard} key={product.id}>
+                <div className={styles.productImgWrap}>
+                  <img className={styles.productImg} src={product.img} alt={product.name} />
                 </div>
-                <div className="product-name">{product.name}</div>
-                <div className="product-price">{product.price}</div>
+                <div className={styles.productName}>{product.name}</div>
+                <div className={styles.productPrice}>{product.price}</div>
               </div>
             ))}
           </div>
           <button
-            className="carousel-arrow"
+            className={styles.carouselArrow}
             onClick={() => setProductPage((p) => Math.min(maxPage, p + 1))}
             disabled={productPage >= maxPage}
           >
@@ -374,11 +376,11 @@ export default function JavinCaseStudy() {
       </section>
 
       {/* ── 4. INSTAGRAM — 비대칭 레이아웃 ── */}
-      <section className="instagram-section">
-        <div className="insta-inner">
+      <section className={styles.instagramSection}>
+        <div className={styles.instaInner}>
           {/* 왼쪽: 큰 사진 */}
           <a
-            className="insta-main"
+            className={styles.instaMain}
             href="https://www.instagram.com/javindseoul/"
             target="_blank"
             rel="noopener noreferrer"
@@ -387,27 +389,27 @@ export default function JavinCaseStudy() {
           </a>
 
           {/* 오른쪽 */}
-          <div className="insta-right">
+          <div className={styles.instaRight}>
             {/* 상단: 텍스트 */}
-            <div className="insta-text-area">
-              <span className="insta-eyebrow">Follow Along</span>
-              <h2 className="insta-handle">@javindseoul</h2>
+            <div className={styles.instaTextArea}>
+              <span className={styles.instaEyebrow}>Follow Along</span>
+              <h2 className={styles.instaHandle}>@javindseoul</h2>
               <a
                 href="https://www.instagram.com/javindseoul/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="insta-link"
+                className={styles.instaLink}
               >
                 FOLLOW US ON INSTAGRAM ›
               </a>
             </div>
 
             {/* 하단: 작은 사진들 */}
-            <div className="insta-sub-grid">
+            <div className={styles.instaSubGrid}>
               {instaSubs.map((src, i) => (
                 <a
                   key={i}
-                  className="insta-sub"
+                  className={styles.instaSub}
                   href="https://www.instagram.com/javindseoul/"
                   target="_blank"
                   rel="noopener noreferrer"
@@ -421,16 +423,16 @@ export default function JavinCaseStudy() {
       </section>
 
       {/* ── FOOTER ── */}
-      <footer className="footer">
-        <div className="footer-top">
-          <nav className="footer-nav">
+      <footer className={styles.footer}>
+        <div className={styles.footerTop}>
+          <nav className={styles.footerNav}>
             <a href="#">Home</a>
             <a href="#">Agreement</a>
             <a href="#">Privacy</a>
             <a href="#">Guide</a>
             <a href="#">Contact</a>
           </nav>
-          <div className="footer-social">
+          <div className={styles.footerSocial}>
             <a
               href="https://www.instagram.com/javindseoul/"
               target="_blank"
@@ -443,15 +445,15 @@ export default function JavinCaseStudy() {
             </a>
           </div>
         </div>
-        <div className="footer-info">
+        <div className={styles.footerInfo}>
           사업자번호: 000-00-00000 &nbsp;|&nbsp; MON – FRI 11:00am – 4:00pm
           &nbsp;|&nbsp; Lunch 12:00pm – 1:00pm (SAT, SUN, Holiday Off)
           <br />
           서울특별시 강남구 청담동 000-00 &nbsp;|&nbsp; 대표: 김자빈 &nbsp;|&nbsp;
           happymail@javindseoul.com
         </div>
-        <div className="footer-bottom">
-          <span className="footer-copy">
+        <div className={styles.footerBottom}>
+          <span className={styles.footerCopy}>
             Copyright ©자빈드서울. All rights reserved. &nbsp;|&nbsp; Hosting by
             cafe24. Designed by moon.
           </span>

@@ -36,12 +36,12 @@ body {
   backdrop-filter: blur(12px);
   border-bottom: 1px solid rgba(0, 0, 0, 0.06);
 }
-.nav-left {
+.navLeft {
   display: flex;
   gap: 32px;
   align-items: center;
 }
-.nav-left a {
+.navLeft a {
   font-size: 10.5px;
   letter-spacing: 0.13em;
   text-transform: uppercase;
@@ -50,11 +50,11 @@ body {
   font-weight: 400;
   transition: opacity 0.2s;
 }
-.nav-left a:hover {
+.navLeft a:hover {
   opacity: 0.4;
 }
 
-.nav-logo {
+.navLogo {
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
@@ -66,12 +66,12 @@ body {
   color: #0a0a0a;
   text-decoration: none;
 }
-.nav-right {
+.navRight {
   display: flex;
   gap: 24px;
   align-items: center;
 }
-.nav-right a {
+.navRight a {
   font-size: 10.5px;
   letter-spacing: 0.13em;
   text-transform: uppercase;
@@ -80,7 +80,7 @@ body {
   font-weight: 400;
   transition: opacity 0.2s;
 }
-.nav-right a:hover {
+.navRight a:hover {
   opacity: 0.4;
 }
 
@@ -97,7 +97,7 @@ body {
   overflow: hidden;
 }
 
-.hero-slide {
+.heroSlide {
   position: absolute;
   inset: 0;
   transition:
@@ -107,18 +107,18 @@ body {
   transform: scale(1.03);
   pointer-events: none;
 }
-.hero-slide.active {
+.heroSlide.active {
   opacity: 1;
   transform: scale(1);
   pointer-events: auto;
 }
-.hero-slide img {
+.heroSlide img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   object-position: center;
 }
-.hero-slide-overlay {
+.heroSlideOverlay {
   position: absolute;
   inset: 0;
   background: linear-gradient(
@@ -129,7 +129,7 @@ body {
 }
 
 /* 중앙 정렬 */
-.hero-content {
+.heroContent {
   position: absolute;
   inset: 0;
   z-index: 2;
@@ -143,12 +143,12 @@ body {
     opacity 0.45s,
     transform 0.45s;
 }
-.hero-content.animating {
+.heroContent.animating {
   opacity: 0;
   transform: translateY(22px);
 }
 
-.hero-tag {
+.heroTag {
   font-size: 10px;
   letter-spacing: 0.32em;
   text-transform: uppercase;
@@ -157,7 +157,7 @@ body {
   margin-bottom: 20px;
   display: block;
 }
-.hero-title {
+.heroTitle {
   font-family: 'Outfit', sans-serif;
   font-size: clamp(52px, 7vw, 96px);
   font-weight: 700;
@@ -168,7 +168,7 @@ body {
   margin-bottom: 24px;
   white-space: pre-line;
 }
-.hero-desc {
+.heroDesc {
   font-size: 13.5px;
   line-height: 1.8;
   color: rgba(255, 255, 255, 0.7);
@@ -177,7 +177,7 @@ body {
   white-space: pre-line;
   max-width: 360px;
 }
-.hero-btn {
+.heroBtn {
   display: inline-flex;
   align-items: center;
   gap: 12px;
@@ -194,12 +194,12 @@ body {
     background 0.25s,
     border-color 0.25s;
 }
-.hero-btn:hover {
+.heroBtn:hover {
   background: rgba(255, 255, 255, 0.1);
   border-color: rgba(255, 255, 255, 0.95);
 }
 
-.hero-controls {
+.heroControls {
   position: absolute;
   bottom: 52px;
   left: 60px;
@@ -208,21 +208,21 @@ body {
   align-items: center;
   gap: 18px;
 }
-.hero-index {
+.heroIndex {
   font-size: 10px;
   letter-spacing: 0.15em;
   color: rgba(255, 255, 255, 0.45);
   font-weight: 300;
   min-width: 48px;
 }
-.hero-track {
+.heroTrack {
   width: 88px;
   height: 1px;
   background: rgba(255, 255, 255, 0.2);
   position: relative;
   overflow: hidden;
 }
-.hero-track-fill {
+.heroTrackFill {
   position: absolute;
   top: 0;
   left: 0;
@@ -239,7 +239,7 @@ body {
   }
 }
 
-.hero-arrows {
+.heroArrows {
   position: absolute;
   bottom: 44px;
   right: 56px;
@@ -247,7 +247,7 @@ body {
   display: flex;
   gap: 10px;
 }
-.hero-arrow {
+.heroArrow {
   width: 46px;
   height: 46px;
   border: 1px solid rgba(255, 255, 255, 0.3);
@@ -262,7 +262,7 @@ body {
     background 0.22s,
     border-color 0.22s;
 }
-.hero-arrow:hover {
+.heroArrow:hover {
   background: rgba(255, 255, 255, 0.1);
   border-color: rgba(255, 255, 255, 0.8);
 }
@@ -270,18 +270,17 @@ body {
 /* ─────────────────────────────────────────
    2. ABOUT BRAND  1920 × 980
 ───────────────────────────────────────── */
-.about-section {
+.aboutSection {
   width: 100%;
   min-height: 920px;
   display: grid;
-  grid-template-columns: 0.8fr 1fr 1fr; /* 세 컬럼 균등 */
+  grid-template-columns: 0.8fr 1fr 1fr;
   align-items: center;
   padding: 0 100px;
   background: #fff;
 }
 
-/* 장식용 타이포 */
-.about-deco-labels {
+.aboutDecoLabels {
   display: flex;
   flex-direction: column;
   gap: 40px;
@@ -289,7 +288,7 @@ body {
   pointer-events: none;
   overflow: hidden;
 }
-.about-deco-label {
+.aboutDecoLabel {
   font-size: 40px;
   letter-spacing: 0.06em;
   font-family: 'Outfit', sans-serif;
@@ -298,7 +297,7 @@ body {
   color: #c8c8c8;
 }
 
-.about-image-wrap {
+.aboutImageWrap {
   width: 100%;
   max-width: 420px;
   height: 560px;
@@ -306,16 +305,16 @@ body {
   flex-shrink: 0;
   padding-right: 50px;
 }
-.about-image-wrap img {
+.aboutImageWrap img {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
 
-.about-text {
+.aboutText {
   padding-left: 30px;
 }
-.about-label {
+.aboutLabel {
   font-size: 9px;
   letter-spacing: 0.3em;
   text-transform: uppercase;
@@ -324,7 +323,7 @@ body {
   display: block;
   font-weight: 400;
 }
-.about-title {
+.aboutTitle {
   font-family: 'Outfit', sans-serif;
   font-size: clamp(28px, 3vw, 44px);
   font-weight: 600;
@@ -333,13 +332,13 @@ body {
   color: #0a0a0a;
   margin-bottom: 28px;
 }
-.about-rule {
+.aboutRule {
   width: 28px;
   height: 1px;
   background: #0a0a0a;
   margin-bottom: 28px;
 }
-.about-desc {
+.aboutDesc {
   font-size: 14px;
   line-height: 1.95;
   color: #777;
@@ -350,44 +349,42 @@ body {
 /* ─────────────────────────────────────────
    3. SIGNATURE SELECTION  1920 × 1319
 ───────────────────────────────────────── */
-.signature-section {
+.signatureSection {
   width: 100%;
   background: #0a0a0a;
 }
-.signature-header {
+.signatureHeader {
   padding: 80px 120px 64px;
   text-align: center;
   position: relative;
 }
 
-/* 숨김 처리 */
-.signature-eyebrow {
+.signatureEyebrow {
   display: none;
 }
-.signature-title-line {
+.signatureTitleLine {
   display: none;
 }
-.sig-divider {
+.sigDivider {
   display: none;
 }
 
-/* 가로선 꾸밈 */
-.signature-divider-full {
+.signatureDividerFull {
   width: 100%;
   height: 1px;
   background: rgba(255, 255, 255, 0.2);
   margin: 20px 0;
-  margin-left: -120px; /* 추가 */
-  width: calc(100% + 240px); /* 추가 — 양쪽 padding 만큼 넓히기 */
+  margin-left: -120px;
+  width: calc(100% + 240px);
 }
 
-.signature-title-row {
+.signatureTitleRow {
   display: flex;
   align-items: center;
   justify-content: center;
   margin-bottom: 0;
 }
-.signature-title {
+.signatureTitle {
   font-family: 'Outfit', sans-serif;
   font-size: clamp(26px, 2.8vw, 40px);
   font-weight: 600;
@@ -395,7 +392,7 @@ body {
   letter-spacing: 0.04em;
   white-space: nowrap;
 }
-.signature-sub {
+.signatureSub {
   font-size: 13px;
   color: rgba(255, 255, 255, 0.38);
   font-weight: 300;
@@ -403,30 +400,29 @@ body {
   padding: 20px 0;
 }
 
-/* 가로 2칼럼 카드 */
-.signature-grid {
+.signatureGrid {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 0;
 }
-.sig-card {
+.sigCard {
   position: relative;
   overflow: hidden;
   height: 660px;
   cursor: pointer;
 }
-.sig-card img {
+.sigCard img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   transition: transform 0.75s ease;
   filter: brightness(0.72);
 }
-.sig-card:hover img {
+.sigCard:hover img {
   transform: scale(1.05);
   filter: brightness(0.82);
 }
-.sig-card-content {
+.sigCardContent {
   position: absolute;
   inset: 0;
   display: flex;
@@ -434,7 +430,7 @@ body {
   justify-content: flex-end;
   padding: 52px 60px;
 }
-.sig-card-eyebrow {
+.sigCardEyebrow {
   font-size: 9px;
   letter-spacing: 0.25em;
   text-transform: uppercase;
@@ -442,7 +438,7 @@ body {
   margin-bottom: 14px;
   font-weight: 400;
 }
-.sig-card-title {
+.sigCardTitle {
   font-family: 'Outfit', sans-serif;
   font-size: clamp(22px, 2.6vw, 36px);
   font-weight: 700;
@@ -452,7 +448,7 @@ body {
   margin-bottom: 22px;
   line-height: 1.1;
 }
-.sig-card-btn {
+.sigCardBtn {
   display: inline-flex;
   align-items: center;
   gap: 10px;
@@ -469,7 +465,7 @@ body {
     border-color 0.25s,
     gap 0.3s;
 }
-.sig-card:hover .sig-card-btn {
+.sigCard:hover .sigCardBtn {
   border-color: #fff;
   gap: 16px;
 }
@@ -477,16 +473,16 @@ body {
 /* ─────────────────────────────────────────
    BESTSELLERS
 ───────────────────────────────────────── */
-.bestsellers-section {
+.bestsellersSection {
   padding: 104px 0 124px;
   background: #fff;
 }
-.bestsellers-header {
+.bestsellersHeader {
   text-align: center;
   margin-bottom: 52px;
   padding: 0 120px;
 }
-.bestsellers-eyebrow {
+.bestsellersEyebrow {
   font-size: 9px;
   letter-spacing: 0.3em;
   text-transform: uppercase;
@@ -495,7 +491,7 @@ body {
   display: block;
   font-weight: 400;
 }
-.bestsellers-title {
+.bestsellersTitle {
   font-family: 'Outfit', sans-serif;
   font-size: 30px;
   font-weight: 700;
@@ -504,14 +500,14 @@ body {
   color: #0a0a0a;
   margin-bottom: 32px;
 }
-.bestsellers-tabs {
+.bestsellersTabs {
   display: inline-flex;
   align-items: center;
   border: 1px solid #0a0a0a;
   border-radius: 100px;
   overflow: hidden;
 }
-.bestsellers-tab {
+.bestsellersTab {
   padding: 9px 28px;
   font-size: 10.5px;
   letter-spacing: 0.13em;
@@ -524,61 +520,61 @@ body {
   color: #aaa;
   transition: all 0.25s;
 }
-.bestsellers-tab.active {
+.bestsellersTab.active {
   background: #0a0a0a;
   color: #fff;
   border-radius: 100px;
 }
-.bestsellers-tab:not(.active):hover {
+.bestsellersTab:not(.active):hover {
   color: #0a0a0a;
 }
-.tab-sep {
+.tabSep {
   width: 1px;
   height: 14px;
   background: #dedede;
   flex-shrink: 0;
 }
 
-.products-carousel {
+.productsCarousel {
   display: flex;
   align-items: center;
   padding: 0 80px;
 }
-.products-track {
+.productsTrack {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   flex: 1;
 }
-.product-card {
+.productCard {
   padding: 40px 40px 32px;
   text-align: center;
   cursor: pointer;
   transition: transform 0.3s;
   border-right: 1px solid #f0f0f0;
 }
-.product-card:last-child {
+.productCard:last-child {
   border-right: none;
 }
-.product-card:hover {
+.productCard:hover {
   transform: translateY(-6px);
 }
-.product-img-wrap {
+.productImgWrap {
   width: 100%;
   aspect-ratio: 1 / 1;
   overflow: hidden;
   margin-bottom: 20px;
   background: #f8f7f5;
 }
-.product-img {
+.productImg {
   width: 100%;
   height: 100%;
   object-fit: cover;
   transition: transform 0.5s ease;
 }
-.product-card:hover .product-img {
+.productCard:hover .productImg {
   transform: scale(1.06);
 }
-.product-name {
+.productName {
   font-size: 11.5px;
   font-weight: 400;
   letter-spacing: 0.05em;
@@ -587,13 +583,13 @@ body {
   line-height: 1.5;
   text-transform: uppercase;
 }
-.product-price {
+.productPrice {
   font-size: 12px;
   color: #aaa;
   font-weight: 300;
   letter-spacing: 0.05em;
 }
-.carousel-arrow {
+.carouselArrow {
   width: 48px;
   height: 48px;
   flex-shrink: 0;
@@ -608,16 +604,16 @@ body {
   transition: all 0.25s;
   border-radius: 50%;
 }
-.carousel-arrow:hover {
+.carouselArrow:hover {
   background: #0a0a0a;
   color: #fff;
   border-color: #0a0a0a;
 }
-.carousel-arrow:disabled {
+.carouselArrow:disabled {
   opacity: 0.2;
   cursor: default;
 }
-.carousel-arrow:disabled:hover {
+.carouselArrow:disabled:hover {
   background: #fff;
   color: #0a0a0a;
   border-color: #e0e0e0;
@@ -625,24 +621,22 @@ body {
 
 /* ─────────────────────────────────────────
    4. INSTAGRAM — 비대칭 레이아웃
-   왼쪽: 큰 사진 1장 / 오른쪽: 텍스트 + 작은 사진
 ───────────────────────────────────────── */
-.instagram-section {
+.instagramSection {
   background: #f5f3f0;
 }
-.insta-inner {
+.instaInner {
   display: grid;
   grid-template-columns: 55% 45%;
   min-height: 700px;
 }
 
-/* 왼쪽 큰 사진 */
-.insta-main {
+.instaMain {
   overflow: hidden;
   cursor: pointer;
   height: 100%;
 }
-.insta-main img {
+.instaMain img {
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -651,19 +645,17 @@ body {
     filter 0.4s;
   filter: saturate(0.85);
 }
-.insta-main:hover img {
+.instaMain:hover img {
   transform: scale(1.04);
   filter: saturate(1);
 }
 
-/* 오른쪽 */
-.insta-right {
+.instaRight {
   display: flex;
   flex-direction: column;
 }
 
-/* 오른쪽 상단 — 텍스트 */
-.insta-text-area {
+.instaTextArea {
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -672,7 +664,7 @@ body {
   padding: 60px 72px;
   background: #f5f3f0;
 }
-.insta-eyebrow {
+.instaEyebrow {
   font-size: 9px;
   letter-spacing: 0.3em;
   text-transform: uppercase;
@@ -680,7 +672,7 @@ body {
   margin-bottom: 16px;
   font-weight: 400;
 }
-.insta-handle {
+.instaHandle {
   font-family: 'Outfit', sans-serif;
   font-size: clamp(28px, 3.8vw, 52px);
   font-weight: 700;
@@ -689,7 +681,7 @@ body {
   margin-bottom: 24px;
   line-height: 1;
 }
-.insta-link {
+.instaLink {
   font-size: 10px;
   letter-spacing: 0.2em;
   text-transform: uppercase;
@@ -700,26 +692,25 @@ body {
   transition: opacity 0.2s;
   font-weight: 500;
 }
-.insta-link:hover {
+.instaLink:hover {
   opacity: 0.38;
 }
 
-/* 오른쪽 하단 — 작은 사진들 */
-.insta-sub-grid {
+.instaSubGrid {
   display: grid;
   grid-template-columns: 1fr 1fr;
   height: 340px;
 }
-.insta-sub {
+.instaSub {
   overflow: hidden;
   cursor: pointer;
   position: relative;
 }
-.insta-sub:last-child {
+.instaSub:last-child {
   grid-column: span 2;
   height: 220px;
 }
-.insta-sub img {
+.instaSub img {
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -728,7 +719,7 @@ body {
     filter 0.4s;
   filter: saturate(0.8) brightness(0.95);
 }
-.insta-sub:hover img {
+.instaSub:hover img {
   transform: scale(1.07);
   filter: saturate(1) brightness(1);
 }
@@ -741,7 +732,7 @@ body {
   padding: 48px 120px 28px;
   border-top: 1px solid #f0eeec;
 }
-.footer-top {
+.footerTop {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
@@ -749,11 +740,11 @@ body {
   padding-bottom: 28px;
   border-bottom: 1px solid #f0f0f0;
 }
-.footer-nav {
+.footerNav {
   display: flex;
   gap: 28px;
 }
-.footer-nav a {
+.footerNav a {
   font-size: 10.5px;
   color: #0a0a0a;
   text-decoration: none;
@@ -761,14 +752,14 @@ body {
   transition: opacity 0.2s;
   text-transform: uppercase;
 }
-.footer-nav a:hover {
+.footerNav a:hover {
   opacity: 0.4;
 }
-.footer-social {
+.footerSocial {
   display: flex;
   gap: 12px;
 }
-.footer-social a {
+.footerSocial a {
   width: 32px;
   height: 32px;
   border: 1px solid #e4e4e4;
@@ -782,23 +773,23 @@ body {
   letter-spacing: 0.04em;
   transition: all 0.2s;
 }
-.footer-social a:hover {
+.footerSocial a:hover {
   border-color: #0a0a0a;
   color: #0a0a0a;
 }
-.footer-info {
+.footerInfo {
   font-size: 10px;
   color: #c0c0c0;
   line-height: 2.2;
   margin-bottom: 20px;
   font-family: 'Noto Sans KR', sans-serif;
 }
-.footer-bottom {
+.footerBottom {
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
-.footer-copy {
+.footerCopy {
   font-size: 10px;
   color: #ccc;
   letter-spacing: 0.04em;
@@ -818,18 +809,18 @@ body {
     transform: translateY(0);
   }
 }
-.hero-content > * {
+.heroContent > * {
   animation: fadeUp 0.75s ease both;
 }
-.hero-content > *:nth-child(1) {
+.heroContent > *:nth-child(1) {
   animation-delay: 0.08s;
 }
-.hero-content > *:nth-child(2) {
+.heroContent > *:nth-child(2) {
   animation-delay: 0.2s;
 }
-.hero-content > *:nth-child(3) {
+.heroContent > *:nth-child(3) {
   animation-delay: 0.32s;
 }
-.hero-content > *:nth-child(4) {
+.heroContent > *:nth-child(4) {
   animation-delay: 0.44s;
 }
