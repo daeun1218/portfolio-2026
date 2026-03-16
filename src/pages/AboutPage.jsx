@@ -41,7 +41,7 @@ const productLines = [
   },
 ];
 
-export default function About() {
+export default function AboutPage() {
   const [hoveredPhilo, setHoveredPhilo] = useState(null);
 
   return (

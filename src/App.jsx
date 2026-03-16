@@ -3,8 +3,8 @@ import { Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';
 import ProjectDetail from './pages/ProjectDetail';
 import CaseStudy from './pages/CaseStudy';
-import JavinDeSeoul from './pages/JavinDeSeoul';
-import About from './pages/About';
+import JavinCaseStudy from './pages/JavinCaseStudy';
+import AboutPage from './pages/AboutPage';
 
 export default function App() {
   return (
@@ -12,8 +12,8 @@ export default function App() {
       <Route path="/" element={<Home />} />
       <Route path="/project/:id" element={<ProjectDetail />} />
       <Route path="/project/:id/case-study" element={<CaseStudy />} />
-      <Route path="/javin" element={<JavinDeSeoul />} />
-      <Route path="/javin/about" element={<About />} />
+      <Route path="/javin" element={<JavinCaseStudy />} />
+      <Route path="/javin/about" element={<AboutPage />} />
     </Routes>
   );
 }

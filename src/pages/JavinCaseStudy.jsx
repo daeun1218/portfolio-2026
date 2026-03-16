@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import './JavinDeSeoul.css';
+import './JavinCaseStudy.css';
 
 /* ─────────────────────────────────────────
    DATA
@@ -144,7 +144,7 @@ const ITEMS_PER_PAGE = 3;
 /* ─────────────────────────────────────────
    COMPONENT
 ───────────────────────────────────────── */
-export default function JavinDeSeoul() {
+export default function JavinCaseStudy() {
   const [heroIndex, setHeroIndex] = useState(0);
   const [heroAnimating, setHeroAnimating] = useState(false);
   const [activeTab, setActiveTab] = useState('#WINK');
