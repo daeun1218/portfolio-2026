@@ -1,0 +1,835 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Noto+Sans+KR:wght@300;400;500;700&display=swap');
+
+/* ── RESET ── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+html {
+  scroll-behavior: smooth;
+}
+body {
+  font-family: 'Outfit', 'Noto Sans KR', sans-serif;
+  background: #fff;
+  color: #0a0a0a;
+  overflow-x: hidden;
+}
+
+/* ─────────────────────────────────────────
+   NAV
+───────────────────────────────────────── */
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 200;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 56px;
+  background: rgba(255, 255, 255, 0.96);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+}
+.nav-left {
+  display: flex;
+  gap: 32px;
+  align-items: center;
+}
+.nav-left a {
+  font-size: 10.5px;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: #0a0a0a;
+  text-decoration: none;
+  font-weight: 400;
+  transition: opacity 0.2s;
+}
+.nav-left a:hover {
+  opacity: 0.4;
+}
+
+.nav-logo {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: 'Outfit', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #0a0a0a;
+  text-decoration: none;
+}
+.nav-right {
+  display: flex;
+  gap: 24px;
+  align-items: center;
+}
+.nav-right a {
+  font-size: 10.5px;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: #0a0a0a;
+  text-decoration: none;
+  font-weight: 400;
+  transition: opacity 0.2s;
+}
+.nav-right a:hover {
+  opacity: 0.4;
+}
+
+/* ─────────────────────────────────────────
+   1. HERO  1920 × 950
+───────────────────────────────────────── */
+.hero {
+  position: relative;
+  width: 100%;
+  height: calc(100vh - 60px);
+  min-height: 600px;
+  max-height: 950px;
+  margin-top: 60px;
+  overflow: hidden;
+}
+
+.hero-slide {
+  position: absolute;
+  inset: 0;
+  transition:
+    opacity 0.8s ease,
+    transform 0.8s ease;
+  opacity: 0;
+  transform: scale(1.03);
+  pointer-events: none;
+}
+.hero-slide.active {
+  opacity: 1;
+  transform: scale(1);
+  pointer-events: auto;
+}
+.hero-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+.hero-slide-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.18) 0%,
+    rgba(0, 0, 0, 0.45) 100%
+  );
+}
+
+/* 중앙 정렬 */
+.hero-content {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 0 40px 80px;
+  transition:
+    opacity 0.45s,
+    transform 0.45s;
+}
+.hero-content.animating {
+  opacity: 0;
+  transform: translateY(22px);
+}
+
+.hero-tag {
+  font-size: 10px;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.65);
+  font-weight: 400;
+  margin-bottom: 20px;
+  display: block;
+}
+.hero-title {
+  font-family: 'Outfit', sans-serif;
+  font-size: clamp(52px, 7vw, 96px);
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  line-height: 1;
+  color: #fff;
+  margin-bottom: 24px;
+  white-space: pre-line;
+}
+.hero-desc {
+  font-size: 13.5px;
+  line-height: 1.8;
+  color: rgba(255, 255, 255, 0.7);
+  font-weight: 300;
+  margin-bottom: 44px;
+  white-space: pre-line;
+  max-width: 360px;
+}
+.hero-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  padding: 14px 36px;
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #fff;
+  background: transparent;
+  cursor: pointer;
+  font-family: 'Outfit', sans-serif;
+  transition:
+    background 0.25s,
+    border-color 0.25s;
+}
+.hero-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.95);
+}
+
+.hero-controls {
+  position: absolute;
+  bottom: 52px;
+  left: 60px;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+.hero-index {
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  color: rgba(255, 255, 255, 0.45);
+  font-weight: 300;
+  min-width: 48px;
+}
+.hero-track {
+  width: 88px;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.2);
+  position: relative;
+  overflow: hidden;
+}
+.hero-track-fill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.8);
+  animation: trackProgress 5.5s linear forwards;
+}
+@keyframes trackProgress {
+  from {
+    width: 0%;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+.hero-arrows {
+  position: absolute;
+  bottom: 44px;
+  right: 56px;
+  z-index: 3;
+  display: flex;
+  gap: 10px;
+}
+.hero-arrow {
+  width: 46px;
+  height: 46px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  background: transparent;
+  color: #fff;
+  cursor: pointer;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition:
+    background 0.22s,
+    border-color 0.22s;
+}
+.hero-arrow:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.8);
+}
+
+/* ─────────────────────────────────────────
+   2. ABOUT BRAND  1920 × 980
+───────────────────────────────────────── */
+.about-section {
+  width: 100%;
+  min-height: 920px;
+  display: grid;
+  grid-template-columns: 0.8fr 1fr 1fr; /* 세 컬럼 균등 */
+  align-items: center;
+  padding: 0 100px;
+  background: #fff;
+}
+
+/* 장식용 타이포 */
+.about-deco-labels {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  user-select: none;
+  pointer-events: none;
+  overflow: hidden;
+}
+.about-deco-label {
+  font-size: 40px;
+  letter-spacing: 0.06em;
+  font-family: 'Outfit', sans-serif;
+  font-weight: 600;
+  padding: 9px;
+  color: #c8c8c8;
+}
+
+.about-image-wrap {
+  width: 100%;
+  max-width: 420px;
+  height: 560px;
+  overflow: hidden;
+  flex-shrink: 0;
+  padding-right: 50px;
+}
+.about-image-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.about-text {
+  padding-left: 30px;
+}
+.about-label {
+  font-size: 9px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: #c0c0c0;
+  margin-bottom: 22px;
+  display: block;
+  font-weight: 400;
+}
+.about-title {
+  font-family: 'Outfit', sans-serif;
+  font-size: clamp(28px, 3vw, 44px);
+  font-weight: 600;
+  line-height: 1.18;
+  letter-spacing: -0.01em;
+  color: #0a0a0a;
+  margin-bottom: 28px;
+}
+.about-rule {
+  width: 28px;
+  height: 1px;
+  background: #0a0a0a;
+  margin-bottom: 28px;
+}
+.about-desc {
+  font-size: 14px;
+  line-height: 1.95;
+  color: #777;
+  font-weight: 300;
+  max-width: 380px;
+}
+
+/* ─────────────────────────────────────────
+   3. SIGNATURE SELECTION  1920 × 1319
+───────────────────────────────────────── */
+.signature-section {
+  width: 100%;
+  background: #0a0a0a;
+}
+.signature-header {
+  padding: 80px 120px 64px;
+  text-align: center;
+  position: relative;
+}
+
+/* 숨김 처리 */
+.signature-eyebrow {
+  display: none;
+}
+.signature-title-line {
+  display: none;
+}
+.sig-divider {
+  display: none;
+}
+
+/* 가로선 꾸밈 */
+.signature-divider-full {
+  width: 100%;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.2);
+  margin: 20px 0;
+  margin-left: -120px; /* 추가 */
+  width: calc(100% + 240px); /* 추가 — 양쪽 padding 만큼 넓히기 */
+}
+
+.signature-title-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0;
+}
+.signature-title {
+  font-family: 'Outfit', sans-serif;
+  font-size: clamp(26px, 2.8vw, 40px);
+  font-weight: 600;
+  color: #fff;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+}
+.signature-sub {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.38);
+  font-weight: 300;
+  letter-spacing: 0.04em;
+  padding: 20px 0;
+}
+
+/* 가로 2칼럼 카드 */
+.signature-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+}
+.sig-card {
+  position: relative;
+  overflow: hidden;
+  height: 660px;
+  cursor: pointer;
+}
+.sig-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.75s ease;
+  filter: brightness(0.72);
+}
+.sig-card:hover img {
+  transform: scale(1.05);
+  filter: brightness(0.82);
+}
+.sig-card-content {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 52px 60px;
+}
+.sig-card-eyebrow {
+  font-size: 9px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.45);
+  margin-bottom: 14px;
+  font-weight: 400;
+}
+.sig-card-title {
+  font-family: 'Outfit', sans-serif;
+  font-size: clamp(22px, 2.6vw, 36px);
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin-bottom: 22px;
+  line-height: 1.1;
+}
+.sig-card-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 9.5px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.35);
+  padding-bottom: 3px;
+  width: fit-content;
+  transition:
+    border-color 0.25s,
+    gap 0.3s;
+}
+.sig-card:hover .sig-card-btn {
+  border-color: #fff;
+  gap: 16px;
+}
+
+/* ─────────────────────────────────────────
+   BESTSELLERS
+───────────────────────────────────────── */
+.bestsellers-section {
+  padding: 104px 0 124px;
+  background: #fff;
+}
+.bestsellers-header {
+  text-align: center;
+  margin-bottom: 52px;
+  padding: 0 120px;
+}
+.bestsellers-eyebrow {
+  font-size: 9px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: #c8c8c8;
+  margin-bottom: 14px;
+  display: block;
+  font-weight: 400;
+}
+.bestsellers-title {
+  font-family: 'Outfit', sans-serif;
+  font-size: 30px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #0a0a0a;
+  margin-bottom: 32px;
+}
+.bestsellers-tabs {
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid #0a0a0a;
+  border-radius: 100px;
+  overflow: hidden;
+}
+.bestsellers-tab {
+  padding: 9px 28px;
+  font-size: 10.5px;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  font-family: 'Outfit', sans-serif;
+  font-weight: 400;
+  color: #aaa;
+  transition: all 0.25s;
+}
+.bestsellers-tab.active {
+  background: #0a0a0a;
+  color: #fff;
+  border-radius: 100px;
+}
+.bestsellers-tab:not(.active):hover {
+  color: #0a0a0a;
+}
+.tab-sep {
+  width: 1px;
+  height: 14px;
+  background: #dedede;
+  flex-shrink: 0;
+}
+
+.products-carousel {
+  display: flex;
+  align-items: center;
+  padding: 0 80px;
+}
+.products-track {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  flex: 1;
+}
+.product-card {
+  padding: 40px 40px 32px;
+  text-align: center;
+  cursor: pointer;
+  transition: transform 0.3s;
+  border-right: 1px solid #f0f0f0;
+}
+.product-card:last-child {
+  border-right: none;
+}
+.product-card:hover {
+  transform: translateY(-6px);
+}
+.product-img-wrap {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  margin-bottom: 20px;
+  background: #f8f7f5;
+}
+.product-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+.product-card:hover .product-img {
+  transform: scale(1.06);
+}
+.product-name {
+  font-size: 11.5px;
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  color: #0a0a0a;
+  margin-bottom: 8px;
+  line-height: 1.5;
+  text-transform: uppercase;
+}
+.product-price {
+  font-size: 12px;
+  color: #aaa;
+  font-weight: 300;
+  letter-spacing: 0.05em;
+}
+.carousel-arrow {
+  width: 48px;
+  height: 48px;
+  flex-shrink: 0;
+  border: 1px solid #e0e0e0;
+  background: #fff;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  color: #0a0a0a;
+  transition: all 0.25s;
+  border-radius: 50%;
+}
+.carousel-arrow:hover {
+  background: #0a0a0a;
+  color: #fff;
+  border-color: #0a0a0a;
+}
+.carousel-arrow:disabled {
+  opacity: 0.2;
+  cursor: default;
+}
+.carousel-arrow:disabled:hover {
+  background: #fff;
+  color: #0a0a0a;
+  border-color: #e0e0e0;
+}
+
+/* ─────────────────────────────────────────
+   4. INSTAGRAM — 비대칭 레이아웃
+   왼쪽: 큰 사진 1장 / 오른쪽: 텍스트 + 작은 사진
+───────────────────────────────────────── */
+.instagram-section {
+  background: #f5f3f0;
+}
+.insta-inner {
+  display: grid;
+  grid-template-columns: 55% 45%;
+  min-height: 700px;
+}
+
+/* 왼쪽 큰 사진 */
+.insta-main {
+  overflow: hidden;
+  cursor: pointer;
+  height: 100%;
+}
+.insta-main img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition:
+    transform 0.7s ease,
+    filter 0.4s;
+  filter: saturate(0.85);
+}
+.insta-main:hover img {
+  transform: scale(1.04);
+  filter: saturate(1);
+}
+
+/* 오른쪽 */
+.insta-right {
+  display: flex;
+  flex-direction: column;
+}
+
+/* 오른쪽 상단 — 텍스트 */
+.insta-text-area {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 60px 72px;
+  background: #f5f3f0;
+}
+.insta-eyebrow {
+  font-size: 9px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: #c0c0c0;
+  margin-bottom: 16px;
+  font-weight: 400;
+}
+.insta-handle {
+  font-family: 'Outfit', sans-serif;
+  font-size: clamp(28px, 3.8vw, 52px);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: #0a0a0a;
+  margin-bottom: 24px;
+  line-height: 1;
+}
+.insta-link {
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #0a0a0a;
+  text-decoration: none;
+  border-bottom: 1px solid #0a0a0a;
+  padding-bottom: 2px;
+  transition: opacity 0.2s;
+  font-weight: 500;
+}
+.insta-link:hover {
+  opacity: 0.38;
+}
+
+/* 오른쪽 하단 — 작은 사진들 */
+.insta-sub-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  height: 340px;
+}
+.insta-sub {
+  overflow: hidden;
+  cursor: pointer;
+  position: relative;
+}
+.insta-sub:last-child {
+  grid-column: span 2;
+  height: 220px;
+}
+.insta-sub img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition:
+    transform 0.6s ease,
+    filter 0.4s;
+  filter: saturate(0.8) brightness(0.95);
+}
+.insta-sub:hover img {
+  transform: scale(1.07);
+  filter: saturate(1) brightness(1);
+}
+
+/* ─────────────────────────────────────────
+   FOOTER
+───────────────────────────────────────── */
+.footer {
+  background: #fff;
+  padding: 48px 120px 28px;
+  border-top: 1px solid #f0eeec;
+}
+.footer-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 28px;
+  padding-bottom: 28px;
+  border-bottom: 1px solid #f0f0f0;
+}
+.footer-nav {
+  display: flex;
+  gap: 28px;
+}
+.footer-nav a {
+  font-size: 10.5px;
+  color: #0a0a0a;
+  text-decoration: none;
+  letter-spacing: 0.08em;
+  transition: opacity 0.2s;
+  text-transform: uppercase;
+}
+.footer-nav a:hover {
+  opacity: 0.4;
+}
+.footer-social {
+  display: flex;
+  gap: 12px;
+}
+.footer-social a {
+  width: 32px;
+  height: 32px;
+  border: 1px solid #e4e4e4;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  font-weight: 600;
+  color: #888;
+  text-decoration: none;
+  letter-spacing: 0.04em;
+  transition: all 0.2s;
+}
+.footer-social a:hover {
+  border-color: #0a0a0a;
+  color: #0a0a0a;
+}
+.footer-info {
+  font-size: 10px;
+  color: #c0c0c0;
+  line-height: 2.2;
+  margin-bottom: 20px;
+  font-family: 'Noto Sans KR', sans-serif;
+}
+.footer-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.footer-copy {
+  font-size: 10px;
+  color: #ccc;
+  letter-spacing: 0.04em;
+  font-family: 'Noto Sans KR', sans-serif;
+}
+
+/* ─────────────────────────────────────────
+   ANIMATIONS
+───────────────────────────────────────── */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.hero-content > * {
+  animation: fadeUp 0.75s ease both;
+}
+.hero-content > *:nth-child(1) {
+  animation-delay: 0.08s;
+}
+.hero-content > *:nth-child(2) {
+  animation-delay: 0.2s;
+}
+.hero-content > *:nth-child(3) {
+  animation-delay: 0.32s;
+}
+.hero-content > *:nth-child(4) {
+  animation-delay: 0.44s;
+}

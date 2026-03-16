@@ -9,10 +9,10 @@ const projectData = {
     descKo:
       '브랜드 아이덴티티와 제품 중심 사용자 경험에 초점을 맞춘\n미니멀 뷰티 브랜드 웹사이트 리디자인 프로젝트입니다.',
     role: ['UI/UX Design', 'Frontend Development'],
-    techStack: 'React / JavaScript / CSS / Swiper',
+    techStack: 'Figma / React / JavaScript / CSS / Swiper',
     mockup: '/images/showcase/Javinde_Pf.png',
-    liveUrl: '#',
-    githubUrl: '#',
+    liveUrl: '/javin',
+    githubUrl: 'https://github.com/daeun1218/javin-de-seoul.git',
     caseStudyUrl: '#',
   },
   metrocity: {
