@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import styles from '../styles/pages/JavinCaseStudy.module.css';
+import products from '../data/javinProducts';
 
 /* ─────────────────────────────────────────
    DATA
@@ -8,20 +9,22 @@ const heroSlides = [
   {
     tag: 'authentic',
     title: 'LIP PRIMER',
-    desc: 'Base care, subtle color, and plumping volume —\na lip primer made for lips.',
-    img: 'https://images.unsplash.com/photo-1586495777744-4e6232bf4e5b?w=1920&h=950&fit=crop&crop=center',
+    desc: '베이스 케어, 은은한 컬러, 볼륨감까지 —\n입술을 위해 만든 립 프라이머.',
+    img: '/images/Javin/hero-02.png',
+    moImg: '/images/Javin/mo-hero-02.jpg',
   },
   {
     tag: 'new arrival',
-    title: 'WINK FOUNDATION\nPACT',
-    desc: 'Skin-true coverage that moves with you.\nA foundation pact reimagined.',
-    img: 'https://images.unsplash.com/photo-1631214524020-3c69f9d8b869?w=1920&h=950&fit=crop&crop=center',
+    title: 'WINK FOUNDATION PACT',
+    desc: '피부결 그대로, 자연스럽게 밀착되는 커버력.\n새롭게 완성된 파운데이션 팩트.',
+    img: '/images/Javin/hero-01.jpg',
   },
   {
     tag: 'bestseller',
-    title: 'WINK CUSHION\nGLOW',
-    desc: 'Luminous, buildable coverage with a\nnatural dewy finish.',
-    img: 'https://images.unsplash.com/photo-1596704017248-a9df5d21e90b?w=1920&h=950&fit=crop&crop=center',
+    title: 'WINK CUSHION GLOW',
+    desc: '빛나는 광채, 자유롭게 쌓이는 커버력.\n자연스러운 글로우 마무리.',
+    img: '/images/Javin/hero-03.jpg',
+    moImg: '/images/Javin/mo-hero-03.png',
   },
 ];
 
@@ -43,103 +46,15 @@ const brandValues = [
   },
 ];
 
-const allProducts = {
-  '#WINK': [
-    {
-      id: 1,
-      name: 'WINK Liquid Concealer',
-      price: '₩16,000',
-      img: 'https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=400&h=400&fit=crop',
-    },
-    {
-      id: 2,
-      name: 'WINK FOUNDATION PACT',
-      price: '₩30,000',
-      img: 'https://images.unsplash.com/photo-1631214524020-3c69f9d8b869?w=400&h=400&fit=crop',
-    },
-    {
-      id: 3,
-      name: 'WINK Eye Shade Primer Discovery Kit',
-      price: '₩10,000',
-      img: 'https://images.unsplash.com/photo-1583241800698-e8ab01830a66?w=400&h=400&fit=crop',
-    },
-    {
-      id: 4,
-      name: 'WINK Cushion Glow',
-      price: '₩35,000',
-      img: 'https://images.unsplash.com/photo-1614156412657-a71dc5b2a9e8?w=400&h=400&fit=crop',
-    },
-    {
-      id: 5,
-      name: 'WINK Lip Primer',
-      price: '₩18,000',
-      img: 'https://images.unsplash.com/photo-1586495777744-4e6232bf4e5b?w=400&h=400&fit=crop',
-    },
-  ],
-  '#UGGING': [
-    {
-      id: 6,
-      name: 'UGGING Blush Stick',
-      price: '₩22,000',
-      img: 'https://images.unsplash.com/photo-1599733594230-6b823276d37f?w=400&h=400&fit=crop',
-    },
-    {
-      id: 7,
-      name: 'UGGING Glow Serum',
-      price: '₩45,000',
-      img: 'https://images.unsplash.com/photo-1617897903246-719242758050?w=400&h=400&fit=crop',
-    },
-    {
-      id: 8,
-      name: 'UGGING Skin Tint',
-      price: '₩28,000',
-      img: 'https://images.unsplash.com/photo-1571781926291-c477ebfd024b?w=400&h=400&fit=crop',
-    },
-    {
-      id: 9,
-      name: 'UGGING Lip Balm',
-      price: '₩12,000',
-      img: 'https://images.unsplash.com/photo-1596704017248-a9df5d21e90b?w=400&h=400&fit=crop',
-    },
-  ],
-  '#TOOL': [
-    {
-      id: 10,
-      name: 'Precision Liner Brush',
-      price: '₩14,000',
-      img: 'https://images.unsplash.com/photo-1512496015851-a90fb38ba796?w=400&h=400&fit=crop',
-    },
-    {
-      id: 11,
-      name: 'Blending Sponge Set',
-      price: '₩9,000',
-      img: 'https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?w=400&h=400&fit=crop',
-    },
-    {
-      id: 12,
-      name: 'Foundation Brush',
-      price: '₩19,000',
-      img: 'https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?w=400&h=400&fit=crop',
-    },
-    {
-      id: 13,
-      name: 'Contour Kit',
-      price: '₩25,000',
-      img: 'https://images.unsplash.com/photo-1556228578-0d85b1a4d571?w=400&h=400&fit=crop',
-    },
-  ],
-};
+const categories = ['ALL', 'FACE', 'EYE', 'LIP', 'TOOL'];
+const allProducts = Object.fromEntries(
+  categories.map((cat) => [
+    cat,
+    cat === 'ALL' ? products : products.filter((p) => p.category === cat),
+  ])
+);
 
-/* 인스타그램: 큰 사진 1장 + 작은 사진 3장 */
-const instaMain =
-  'https://images.unsplash.com/photo-1503023345310-bd7c1de61c7d?w=900&h=1000&fit=crop';
-const instaSubs = [
-  'https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=500&h=480&fit=crop',
-  'https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=500&h=480&fit=crop',
-  'https://images.unsplash.com/photo-1583241800698-e8ab01830a66?w=500&h=480&fit=crop',
-];
-
-const ITEMS_PER_PAGE = 3;
+const VISIBLE_COUNT = 3;
 
 /* ─────────────────────────────────────────
    COMPONENT
@@ -147,16 +62,20 @@ const ITEMS_PER_PAGE = 3;
 export default function JavinCaseStudy() {
   const [heroIndex, setHeroIndex] = useState(0);
   const [heroAnimating, setHeroAnimating] = useState(false);
-  const [activeTab, setActiveTab] = useState('#WINK');
-  const [productPage, setProductPage] = useState(0);
+  const [activeTab, setActiveTab] = useState('ALL');
+  const [startIndex, setStartIndex] = useState(0);
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
   const heroTimer = useRef(null);
 
-  const products = allProducts[activeTab];
-  const maxPage = Math.ceil(products.length / ITEMS_PER_PAGE) - 1;
-  const visibleProducts = products.slice(
-    productPage * ITEMS_PER_PAGE,
-    productPage * ITEMS_PER_PAGE + ITEMS_PER_PAGE
-  );
+  useEffect(() => {
+    const onResize = () => setIsMobile(window.innerWidth <= 768);
+    window.addEventListener('resize', onResize);
+    return () => window.removeEventListener('resize', onResize);
+  }, []);
+
+  const visibleCount = isMobile ? 1 : VISIBLE_COUNT;
+  const currentProducts = allProducts[activeTab];
+  const maxStart = Math.max(0, currentProducts.length - visibleCount);
 
   useEffect(() => {
     heroTimer.current = setInterval(
@@ -177,7 +96,7 @@ export default function JavinCaseStudy() {
 
   function handleTab(tab) {
     setActiveTab(tab);
-    setProductPage(0);
+    setStartIndex(0);
   }
 
   const slide = heroSlides[heroIndex];
@@ -189,14 +108,14 @@ export default function JavinCaseStudy() {
         <div className={styles.navLeft}>
           <a href="#">신제품</a>
           <a href="/javin/about">ABOUT</a>
-          <a href="#">컬렉션 ▾</a>
+          <a href="#">컬렉션{!isMobile && ' ▾'}</a>
         </div>
         <a href="/javin" className={styles.navLogo}>
           JAVIN DE SEOUL
         </a>
         <div className={styles.navRight}>
           <a href="#">로그인</a>
-          <a href="#">가방</a>
+          <a href="#">Bag</a>
         </div>
       </nav>
 
@@ -207,7 +126,7 @@ export default function JavinCaseStudy() {
             key={i}
             className={`${styles.heroSlide}${i === heroIndex ? ` ${styles.active}` : ''}`}
           >
-            <img src={s.img} alt={s.title} />
+            <img src={isMobile && s.moImg ? s.moImg : s.img} alt={s.title} />
             <div className={styles.heroSlideOverlay} />
           </div>
         ))}
@@ -271,8 +190,9 @@ export default function JavinCaseStudy() {
           <h2 className={styles.aboutTitle}>Beauty doesn't need to be loud.</h2>
           <div className={styles.aboutRule} />
           <p className={styles.aboutDesc}>
-            We create products that sit quietly within everyday life, reflecting
-            individuality, balance, and intention.
+            일상 속에 조용히 스며드는 제품을 만듭니다.
+            <br />
+            개성과 균형, 그리고 의도를 담아서.
           </p>
         </div>
       </section>
@@ -294,7 +214,7 @@ export default function JavinCaseStudy() {
         <div className={styles.signatureGrid}>
           <div className={styles.sigCard}>
             <img
-              src="https://images.unsplash.com/photo-1631214524020-3c69f9d8b869?w=960&h=660&fit=crop"
+              src="/images/Javin/WINK FOUNDATION PACT.png"
               alt="WINK Foundation Pact"
             />
             <div className={styles.sigCardContent}>
@@ -305,10 +225,7 @@ export default function JavinCaseStudy() {
             </div>
           </div>
           <div className={styles.sigCard}>
-            <img
-              src="https://images.unsplash.com/photo-1614156412657-a71dc5b2a9e8?w=960&h=660&fit=crop"
-              alt="WINK Cushion Glow"
-            />
+            <img src="/images/Javin/WINK CUSHION GLOW.png" alt="WINK Cushion Glow" />
             <div className={styles.sigCardContent}>
               <div className={styles.sigCardTitle}>WINK CUSHION GLOW</div>
               <a href="#" className={styles.sigCardBtn}>
@@ -345,81 +262,64 @@ export default function JavinCaseStudy() {
         <div className={styles.productsCarousel}>
           <button
             className={styles.carouselArrow}
-            onClick={() => setProductPage((p) => Math.max(0, p - 1))}
-            disabled={productPage === 0}
+            onClick={() => setStartIndex((i) => Math.max(0, i - 1))}
+            disabled={startIndex === 0}
           >
             ‹
           </button>
-          <div className={styles.productsTrack}>
-            {visibleProducts.map((product) => (
-              <div className={styles.productCard} key={product.id}>
-                <div className={styles.productImgWrap}>
-                  <img
-                    className={styles.productImg}
-                    src={product.img}
-                    alt={product.name}
-                  />
+          <div className={styles.productsTrackOuter}>
+            <div
+              className={styles.productsTrack}
+              style={{
+                transform: `translateX(-${startIndex * (100 / visibleCount)}%)`,
+              }}
+            >
+              {currentProducts.map((product) => (
+                <div className={styles.productCard} key={product.id}>
+                  <div className={styles.productImgWrap}>
+                    <img
+                      className={styles.productImg}
+                      src={product.imageUrl}
+                      alt={product.name}
+                    />
+                  </div>
+                  <div className={styles.productName}>{product.name}</div>
+                  <div className={styles.productPrice}>
+                    ₩{product.price.toLocaleString()}
+                  </div>
                 </div>
-                <div className={styles.productName}>{product.name}</div>
-                <div className={styles.productPrice}>{product.price}</div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
           <button
             className={styles.carouselArrow}
-            onClick={() => setProductPage((p) => Math.min(maxPage, p + 1))}
-            disabled={productPage >= maxPage}
+            onClick={() => setStartIndex((i) => Math.min(maxStart, i + 1))}
+            disabled={startIndex >= maxStart}
           >
             ›
           </button>
         </div>
       </section>
 
-      {/* ── 4. INSTAGRAM — 비대칭 레이아웃 ── */}
+      {/* ── 4. INSTAGRAM ── */}
       <section className={styles.instagramSection}>
-        <div className={styles.instaInner}>
-          {/* 왼쪽: 큰 사진 */}
+        <div className={styles.instaTextArea}>
+          <span className={styles.instaEyebrow}>SNS</span>
+          <h2 className={styles.instaHandle}>@javindseoul</h2>
           <a
-            className={styles.instaMain}
-            href="https://www.instagram.com/javindseoul/"
+            href="https://www.instagram.com/javindeseoul/"
             target="_blank"
             rel="noopener noreferrer"
+            className={styles.instaLink}
           >
-            <img src={instaMain} alt="Instagram main" />
+            FOLLOW US ON INSTAGRAM ›
           </a>
-
-          {/* 오른쪽 */}
-          <div className={styles.instaRight}>
-            {/* 상단: 텍스트 */}
-            <div className={styles.instaTextArea}>
-              <span className={styles.instaEyebrow}>Follow Along</span>
-              <h2 className={styles.instaHandle}>@javindseoul</h2>
-              <a
-                href="https://www.instagram.com/javindseoul/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className={styles.instaLink}
-              >
-                FOLLOW US ON INSTAGRAM ›
-              </a>
-            </div>
-
-            {/* 하단: 작은 사진들 */}
-            <div className={styles.instaSubGrid}>
-              {instaSubs.map((src, i) => (
-                <a
-                  key={i}
-                  className={styles.instaSub}
-                  href="https://www.instagram.com/javindseoul/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <img src={src} alt={`Instagram ${i + 1}`} />
-                </a>
-              ))}
-            </div>
-          </div>
         </div>
+        <img
+          src="/images/Javin/Insta.png"
+          alt="Instagram"
+          className={styles.instagramImage}
+        />
       </section>
 
       {/* ── FOOTER ── */}
@@ -432,33 +332,67 @@ export default function JavinCaseStudy() {
             <a href="#">Guide</a>
             <a href="#">Contact</a>
           </nav>
-          <div className={styles.footerSocial}>
-            <a
-              href="https://www.instagram.com/javindseoul/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              IG
-            </a>
-            <a href="#" target="_blank" rel="noopener noreferrer">
-              FB
-            </a>
-          </div>
         </div>
+
         <div className={styles.footerInfo}>
-          사업자번호: 000-00-00000 &nbsp;|&nbsp; MON – FRI 11:00am – 4:00pm
-          &nbsp;|&nbsp; Lunch 12:00pm – 1:00pm (SAT, SUN, Holiday Off)
-          <br />
-          서울특별시 강남구 청담동 000-00 &nbsp;|&nbsp; 대표: 김자빈 &nbsp;|&nbsp;
-          happymail@javindseoul.com
+          <p className={styles.footerCs}>
+            고객문의 1899-2043
+            <br />
+            MON – FRI 11:00am – 4:00pm (Lunch 12:00pm – 1:30pm)
+            <br />
+            SAT.SUN.Holiday OFF
+            <br />
+            기업 986-024364-04-025 예금주: ㈜다하우스
+          </p>
+          <p className={styles.footerBiz}>
+            상호 ㈜다하우스 &nbsp; 대표자 Da Jeung Kim
+            <br />
+            사업자등록번호 275-86-01965[사업자정보확인]
+            <br />
+            통신판매업 2024-서울용산-0198
+            <br />
+            주소 04348 서울 용산구 이태원로55가길 21 401호
+            <br />
+            개인정보보호책임자 dahaus (javindeseoul@gmail.com)
+            <br />
+            이메일 javindeseoul@gmail.com
+          </p>
+          <p className={styles.footerSafe}>
+            고객님은 안전거래를 위해 결제 시 저희 쇼핑몰에서 가입한 구매안전서비스를
+            이용하실 수 있습니다.
+          </p>
         </div>
+
+        <div className={styles.footerSocial}>
+          <a
+            href="https://www.instagram.com/javindeseoul/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            IG
+          </a>
+          <a href="#" target="_blank" rel="noopener noreferrer">
+            FB
+          </a>
+        </div>
+
         <div className={styles.footerBottom}>
           <span className={styles.footerCopy}>
-            Copyright ©자빈드서울. All rights reserved. &nbsp;|&nbsp; Hosting by
-            cafe24. Designed by moon.
+            Copyright ©㈜다하우스 All rights reserved.
+            <br />
+            Hosting by cafe24. Designed by moen.
           </span>
         </div>
       </footer>
+
+      {/* ── SCROLL TO TOP ── */}
+      <button
+        className={styles.scrollTop}
+        onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+        aria-label="맨 위로"
+      >
+        ↑
+      </button>
     </>
   );
 }

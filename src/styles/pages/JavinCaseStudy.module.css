@@ -138,7 +138,7 @@ body {
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: 0 40px 80px;
+  padding: 40px 40px 40px;
   transition:
     opacity 0.45s,
     transform 0.45s;
@@ -159,9 +159,8 @@ body {
 }
 .heroTitle {
   font-family: 'Outfit', sans-serif;
-  font-size: clamp(52px, 7vw, 96px);
+  font-size: clamp(52px, 5vw, 60px);
   font-weight: 700;
-  letter-spacing: 0.02em;
   text-transform: uppercase;
   line-height: 1;
   color: #fff;
@@ -169,13 +168,13 @@ body {
   white-space: pre-line;
 }
 .heroDesc {
-  font-size: 13.5px;
+  font-size: 18px;
   line-height: 1.8;
   color: rgba(255, 255, 255, 0.7);
-  font-weight: 300;
+  font-weight: 500;
   margin-bottom: 44px;
   white-space: pre-line;
-  max-width: 360px;
+  max-width: 500px;
 }
 .heroBtn {
   display: inline-flex;
@@ -272,7 +271,9 @@ body {
 ───────────────────────────────────────── */
 .aboutSection {
   width: 100%;
-  min-height: 920px;
+  height: calc(100vh - 60px);
+  max-width: 1540px;
+  margin: 0 auto;
   display: grid;
   grid-template-columns: 0.8fr 1fr 1fr;
   align-items: center;
@@ -294,7 +295,7 @@ body {
   font-family: 'Outfit', sans-serif;
   font-weight: 600;
   padding: 9px;
-  color: #c8c8c8;
+  color: #ececec;
 }
 
 .aboutImageWrap {
@@ -315,8 +316,7 @@ body {
   padding-left: 30px;
 }
 .aboutLabel {
-  font-size: 9px;
-  letter-spacing: 0.3em;
+  font-size: 12px;
   text-transform: uppercase;
   color: #c0c0c0;
   margin-bottom: 22px;
@@ -351,10 +351,14 @@ body {
 ───────────────────────────────────────── */
 .signatureSection {
   width: 100%;
+  height: 800px;
+  overflow: hidden;
   background: #0a0a0a;
+  display: flex;
+  flex-direction: column;
 }
 .signatureHeader {
-  padding: 0 120px;
+  padding: 0 30px;
   text-align: center;
   position: relative;
 }
@@ -373,7 +377,7 @@ body {
   width: 100%;
   height: 1px;
   background: rgba(255, 255, 255, 0.2);
-  margin: 20px 0;
+  /* margin: 10px 0; */
   margin-left: -120px;
   width: calc(100% + 240px);
 }
@@ -390,30 +394,31 @@ body {
   font-weight: 600;
   color: #fff;
   white-space: nowrap;
-  padding: 28px 0;
+  padding: 14px 0;
 }
 .signatureSub {
   font-size: 24px;
   color: #fff;
   font-weight: 300;
-  padding: 28px 0;
+  padding: 16px 0;
 }
 
 .signatureGrid {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 0;
+  flex: 1;
 }
 .sigCard {
   position: relative;
   overflow: hidden;
-  height: 660px;
   cursor: pointer;
 }
 .sigCard img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center 1%;
   transition: transform 0.75s ease;
   filter: brightness(0.72);
 }
@@ -438,6 +443,7 @@ body {
   color: #fff;
   text-transform: uppercase;
   margin-bottom: 40px;
+  padding-top: 80px;
   line-height: 1.1;
   text-align: center;
 }
@@ -467,6 +473,7 @@ body {
    BESTSELLERS
 ───────────────────────────────────────── */
 .bestsellersSection {
+  height: 100vh;
   padding: 104px 0 124px;
   background: #fff;
 }
@@ -495,8 +502,8 @@ body {
   overflow: hidden;
 }
 .bestsellersTab {
-  padding: 9px 28px;
-  font-size: 10.5px;
+  padding: 11px 32px;
+  font-size: 13px;
   letter-spacing: 0.13em;
   text-transform: uppercase;
   cursor: pointer;
@@ -504,7 +511,7 @@ body {
   border: none;
   font-family: 'Outfit', sans-serif;
   font-weight: 400;
-  color: #aaa;
+  color: #717171;
   transition: all 0.25s;
 }
 .bestsellersTab.active {
@@ -527,12 +534,16 @@ body {
   align-items: center;
   padding: 0 80px;
 }
-.productsTrack {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
+.productsTrackOuter {
   flex: 1;
+  overflow: hidden;
+}
+.productsTrack {
+  display: flex;
+  transition: transform 0.5s ease;
 }
 .productCard {
+  min-width: calc(100% / 3);
   padding: 40px 40px 32px;
   text-align: center;
   cursor: pointer;
@@ -562,7 +573,7 @@ body {
   transform: scale(1.06);
 }
 .productName {
-  font-size: 11.5px;
+  font-size: 14px;
   font-weight: 400;
   letter-spacing: 0.05em;
   color: #0a0a0a;
@@ -572,7 +583,7 @@ body {
 }
 .productPrice {
   font-size: 12px;
-  color: #aaa;
+  color: #717171;
   font-weight: 300;
   letter-spacing: 0.05em;
 }
@@ -607,51 +618,26 @@ body {
 }
 
 /* ─────────────────────────────────────────
-   4. INSTAGRAM — 비대칭 레이아웃
+   4. INSTAGRAM
 ───────────────────────────────────────── */
 .instagramSection {
-  background: #f5f3f0;
-}
-.instaInner {
-  display: grid;
-  grid-template-columns: 55% 45%;
-  min-height: 600px;
-}
-
-.instaMain {
-  overflow: hidden;
-  cursor: pointer;
-  height: 100%;
-}
-.instaMain img {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.instaRight {
-  display: flex;
-  flex-direction: column;
+  height: calc(100vh - 60px);
   position: relative;
 }
-
 .instaTextArea {
+  position: absolute;
+  top: 48px;
+  left: 700px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  justify-content: flex-start;
-  padding: 48px 72px;
-  position: relative;
   z-index: 1;
-  background: #f5f3f0;
-  flex: 0 0 auto;
 }
-
 .instaEyebrow {
-  font-size: 9px;
-  letter-spacing: 0.3em;
+  font-size: 14px;
   text-transform: uppercase;
-  color: #c0c0c0;
+  color: #0c0c0c;
   margin-bottom: 16px;
   font-weight: 400;
 }
@@ -675,59 +661,21 @@ body {
   transition: opacity 0.2s;
   font-weight: 500;
 }
-
-.instaSubGrid {
-  position: relative;
-  height: 100%;
-  min-height: 560px;
+.instaLink:hover {
+  opacity: 0.38;
 }
-.instaSub {
-  position: absolute;
-  overflow: hidden;
-  cursor: pointer;
-}
-/* 첫 번째 사진 — 왼쪽 하단, 큰 정사각형 */
-.instaSub:nth-child(1) {
-  width: 30%;
-  height: 30%;
-  bottom: 0;
-  left: 0;
-}
-
-/* 두 번째 사진 — 오른쪽, 세로로 긴 형태 */
-.instaSub:nth-child(2) {
-  width: 46%;
-  height: 72%;
-  top: 0;
-  right: 0;
-}
-
-/* 세 번째 사진 — 오른쪽 하단, 작게 */
-.instaSub:nth-child(3) {
-  width: 44%;
-  height: 44%;
-  bottom: 0;
-  right: 2%;
-}
-
-.instaSub:last-child {
-  grid-column: unset;
-  height: 44%;
-}
-
-.instaSub img {
+.instagramImage {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
+  display: block;
 }
 
 /* ─────────────────────────────────────────
    FOOTER
 ───────────────────────────────────────── */
 .footer {
-  background: #fff;
+  background: #0a0a0a;
   padding: 48px 120px 28px;
-  border-top: 1px solid #f0eeec;
+  border-top: 1px solid #1a1a1a;
 }
 .footerTop {
   display: flex;
@@ -735,7 +683,7 @@ body {
   align-items: flex-start;
   margin-bottom: 28px;
   padding-bottom: 28px;
-  border-bottom: 1px solid #f0f0f0;
+  border-bottom: 1px solid #2a2a2a;
 }
 .footerNav {
   display: flex;
@@ -743,7 +691,7 @@ body {
 }
 .footerNav a {
   font-size: 10.5px;
-  color: #0a0a0a;
+  color: #fff;
   text-decoration: none;
   letter-spacing: 0.08em;
   transition: opacity 0.2s;
@@ -753,13 +701,12 @@ body {
   opacity: 0.4;
 }
 .footerSocial {
-  display: flex;
-  gap: 12px;
+  display: none;
 }
 .footerSocial a {
   width: 32px;
   height: 32px;
-  border: 1px solid #e4e4e4;
+  border: 1px solid #3a3a3a;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -771,15 +718,24 @@ body {
   transition: all 0.2s;
 }
 .footerSocial a:hover {
-  border-color: #0a0a0a;
-  color: #0a0a0a;
+  border-color: #fff;
+  color: #fff;
 }
 .footerInfo {
   font-size: 10px;
-  color: #c0c0c0;
+  color: #666;
   line-height: 2.2;
   margin-bottom: 20px;
   font-family: 'Noto Sans KR', sans-serif;
+}
+.footerCs {
+  margin-bottom: 16px;
+}
+.footerBiz {
+  margin-bottom: 16px;
+}
+.footerSafe {
+  margin-bottom: 0;
 }
 .footerBottom {
   display: flex;
@@ -788,7 +744,7 @@ body {
 }
 .footerCopy {
   font-size: 10px;
-  color: #ccc;
+  color: #666;
   letter-spacing: 0.04em;
   font-family: 'Noto Sans KR', sans-serif;
 }
@@ -820,4 +776,292 @@ body {
 }
 .heroContent > *:nth-child(4) {
   animation-delay: 0.44s;
+}
+
+/* ── SCROLL TO TOP ── */
+.scrollTop {
+  display: none;
+}
+
+/* ─────────────────────────────────────────
+   MOBILE  (max-width: 768px)
+───────────────────────────────────────── */
+@media (max-width: 768px) {
+  /* ── NAV ── */
+  .nav {
+    height: 52px;
+    padding: 0 20px;
+  }
+  .navLeft {
+    gap: 16px;
+  }
+  .navLeft a,
+  .navRight a {
+    font-size: 9px;
+  }
+  .navLogo {
+    font-size: 12px;
+    letter-spacing: 0.15em;
+  }
+  .navRight {
+    gap: 16px;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    height: calc(100vh - 52px);
+    min-height: 500px;
+    max-height: none;
+    margin-top: 52px;
+  }
+  .heroContent {
+    padding: 0 24px 60px;
+  }
+  .heroTag {
+    font-size: 9px;
+    margin-bottom: 14px;
+  }
+  .heroTitle {
+    font-size: 32px;
+    margin-bottom: 16px;
+  }
+  .heroDesc {
+    font-size: 14px;
+    line-height: 1.7;
+    margin-bottom: 32px;
+    max-width: 300px;
+  }
+  .heroBtn {
+    padding: 12px 28px;
+    font-size: 9px;
+  }
+  .heroControls {
+    bottom: 24px;
+    left: 24px;
+  }
+  .heroArrows {
+    bottom: 20px;
+    right: 20px;
+    gap: 8px;
+  }
+  .heroArrow {
+    width: 36px;
+    height: 36px;
+    font-size: 16px;
+  }
+
+  /* ── ABOUT ── */
+  .aboutSection {
+    height: auto;
+    min-height: auto;
+    grid-template-columns: 1fr;
+    padding: 60px 24px;
+    gap: 32px;
+    text-align: center;
+  }
+  .aboutDecoLabels {
+    display: none;
+  }
+  .aboutImageWrap {
+    max-width: 260px;
+    height: auto;
+    aspect-ratio: 3 / 4;
+    padding-right: 0;
+    margin: 0 auto;
+  }
+  .aboutText {
+    padding-left: 0;
+  }
+  .aboutTitle {
+    font-size: 24px;
+  }
+  .aboutDesc {
+    max-width: 100%;
+    margin: 0 auto;
+  }
+  .aboutRule {
+    display: none;
+  }
+
+  /* ── SIGNATURE ── */
+  .signatureSection {
+    height: auto;
+  }
+  .signatureHeader {
+    padding: 0 20px;
+  }
+  .signatureDividerFull {
+    margin-left: -20px;
+    width: calc(100% + 40px);
+  }
+  .signatureTitle {
+    font-size: 22px;
+    padding: 12px 0;
+  }
+  .signatureSub {
+    font-size: 16px;
+    padding: 12px 0;
+  }
+  .signatureGrid {
+    grid-template-columns: 1fr;
+  }
+  .sigCard {
+    height: 480px;
+  }
+  .sigCard img {
+    object-position: center center;
+  }
+  .sigCardContent {
+    padding: 32px 24px;
+  }
+  .sigCardTitle {
+    font-size: 22px;
+    padding-top: 40px;
+    margin-bottom: 24px;
+  }
+  .sigCardBtn {
+    font-size: 11px;
+  }
+
+  /* ── BESTSELLERS ── */
+  .bestsellersSection {
+    height: auto;
+    padding: 60px 0 60px;
+  }
+  .bestsellersHeader {
+    padding: 0 24px;
+    margin-bottom: 32px;
+  }
+  .bestsellersTitle {
+    font-size: 22px;
+    margin-bottom: 20px;
+  }
+  .bestsellersTabs {
+    flex-wrap: wrap;
+    border-radius: 9999px;
+  }
+  .bestsellersTab {
+    padding: 8px 16px;
+    font-size: 11px;
+  }
+  .tabSep {
+    display: none;
+  }
+  .productsCarousel {
+    padding: 0 16px;
+  }
+  .productCard {
+    min-width: 100%;
+    padding: 20px 16px 24px;
+  }
+  .carouselArrow {
+    width: 36px;
+    height: 36px;
+    font-size: 14px;
+  }
+  .productName {
+    font-size: 13px;
+  }
+
+  /* ── INSTAGRAM ── */
+  .instagramSection {
+    height: 2000px;
+    background: url('/images/Javin/mo-insta.png') center / cover no-repeat;
+  }
+  .instaTextArea {
+    position: relative;
+    top: auto;
+    left: auto;
+    padding: 500px 24px;
+    align-items: center;
+    text-align: center;
+  }
+  .instaEyebrow {
+    color: #000000;
+  }
+  .instaHandle {
+    font-size: 28px;
+    color: #000000;
+  }
+  .instaLink {
+    color: #000000;
+    border-bottom-color: #000000;
+  }
+  .instagramImage {
+    display: none;
+  }
+
+  /* ── FOOTER ── */
+  .footer {
+    padding: 36px 24px 28px;
+  }
+  .footerTop {
+    flex-direction: column;
+    gap: 20px;
+    align-items: flex-start;
+  }
+  .footerNav {
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 16px;
+  }
+  .footerNav a {
+    font-size: 14px;
+  }
+  .footerInfo {
+    text-align: left;
+    font-size: 13px;
+    line-height: 2;
+    color: #999;
+  }
+  .footerCs {
+    color: #fff;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.8;
+  }
+  .footerSocial {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+  .footerSocial a {
+    width: 36px;
+    height: 36px;
+    border: 1px solid #555;
+    border-radius: 4px;
+    font-size: 16px;
+  }
+  .footerBottom {
+    justify-content: flex-start;
+  }
+  .footerCopy {
+    font-size: 11px;
+    text-align: left;
+    line-height: 1.8;
+  }
+
+  /* ── SCROLL TO TOP ── */
+  .scrollTop {
+    display: flex;
+    position: fixed;
+    bottom: 24px;
+    right: 20px;
+    z-index: 100;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    background: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    font-size: 20px;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    backdrop-filter: blur(4px);
+    transition: background 0.2s;
+  }
+  .scrollTop:hover {
+    background: rgba(0, 0, 0, 0.7);
+  }
 }
