@@ -22,7 +22,7 @@ const projects = [
     title: 'On : art',
     tag: 'UI/UX DESIGN',
     image: null,
-    comingSoon: false,
+    comingSoon: true,
   },
   {
     id: 'react',
