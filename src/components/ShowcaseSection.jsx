@@ -4,10 +4,10 @@ import styles from '../styles/sections/Showcase.module.css';
 
 const projects = [
   {
-    id: 'metrocity',
-    title: 'METROCITY',
+    id: 'RECTO',
+    title: 'RECTO',
     tag: 'Redesign & Frontend Implementation',
-    image: '/images/showcase/Metrocity.jpg',
+    image: '/images/showcase/recto.jpg',
     comingSoon: false,
   },
   {
@@ -21,7 +21,7 @@ const projects = [
     id: 'onart',
     title: 'On : art',
     tag: 'UI/UX DESIGN',
-    image: '/images/showcase/OnArt.jpg',
+    image: null,
     comingSoon: false,
   },
   {

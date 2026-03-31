@@ -15,16 +15,16 @@ const projectData = {
     githubUrl: 'https://github.com/daeun1218/javin-de-seoul.git',
     caseStudyUrl: '#',
   },
-  metrocity: {
-    title: 'METROCITY',
+  RECTO: {
+    title: 'RECTO',
     subtitle: 'Web Redesign & Frontend Implementation',
     descKo:
       '브랜드 아이덴티티와 사용자 경험에 초점을 맞춘\n패션 브랜드 웹사이트 리디자인 프로젝트입니다.',
     role: ['UI/UX Design', 'Frontend Development'],
     techStack: 'React / JavaScript / CSS',
-    mockup: '/images/showcase/Metrocity.jpg',
-    liveUrl: '#',
-    githubUrl: '#',
+    mockup: '/images/showcase/recto-mokup.png',
+    liveUrl: 'https://recto-homepage.vercel.app/',
+    githubUrl: 'https://github.com/daeun1218/recto-homepage',
     caseStudyUrl: '#',
   },
   onart: {
